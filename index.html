@@ -73,22 +73,6 @@ RNA-Seq data
 
 <p>A series of java programs which uses network topology and edge weights are then utilized to carry out analysis of the RNA-Seq data. The package include the following interdependent java programs:</p>
 
-<p>1. <b>TransferAnnotations.jar:</b> Transfers functional annotations from the source sequences to the target sequences.</p>
-
-<p>2. <b>SummarizeExpressions.jar:</b> Summarizes expression levels of contigs highly homologous to a set of query sequences.</p>
-
-<p>3. Uses the SummarizeExpression.jar to estimate expression levels of enzymes in metabolic pathways.</p>
-
-<p>4. <b>GeneSetEnrichmentStats.jar:</b> Generate Gene set enrichment statistics of enzymes and metabolic pathways. </p>
-
-<p>5. <b>PredictInteractions.jar:</b> Generates hypothesis about interaction networks and protein complexes, which are known to interact with each other and is supported by co-expression of their members.</p>
-
-<p>6. <b>GeneListStatistics.jar:</b> Generate Gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs.</p>
-
-<p>7. <b>ParalellCoexpression.jar:</b> Estimates pearson correlation of expression data using paralellColt java package.</p>
-
-<p>8. <b>FindRepresentativeCliques.jar:</b> Finds representative cliques in a graph.</p>
-
 <p>A set of organisms in the phylogenetic neighborhood of with assigned functional annotations are chosen and All vs All BLAST carried out on translated and protein sequences to define an All vs All pairwise sequence similarity network.</p>
 
 <p>The topological neighborhood of the pairwise sequence similarity networks and BLAST bit scores are then used to transfer functional annotations from source organisms to targets, summarize gene-expression values of gene sets and predict interaction relationships between the denovo contigs.</p>
@@ -117,32 +101,49 @@ RNA-Seq data
 
 <p>2. Permutation Statistics</p>
 
+
+<p>1. <b>TransferAnnotations.jar:</b> Transfers functional annotations from the source sequences to the target sequences.</p>
+
+<p>2. <b>SummarizeExpressions.jar:</b> Summarizes expression levels of contigs highly homologous to a set of query sequences.</p>
+
+<p>3. Uses the SummarizeExpression.jar to estimate expression levels of enzymes in metabolic pathways.</p>
+
+<p>4. <b>GeneSetEnrichmentStats.jar:</b> Generate Gene set enrichment statistics of enzymes and metabolic pathways. </p>
+
+<p>5. <b>PredictInteractions.jar:</b> Generates hypothesis about interaction networks and protein complexes, which are known to interact with each other and is supported by co-expression of their members.</p>
+
+<p>6. <b>GeneListStatistics.jar:</b> Generate Gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs.</p>
+
+<p>7. <b>ParalellCoexpression.jar:</b> Estimates pearson correlation of expression data using paralellColt java package.</p>
+
+<p>8. <b>FindRepresentativeCliques.jar:</b> Finds representative cliques in a graph.</p>
+
+
+
 <p>Overview of the workflow:</p>
 
-<p>1. Defining the pairwise sequence similarity network: </p>
+<p>1. Preparing the input files </p>
 
-<p>2. Collecting annotations from source organisms and formatting the source annotations in the annotations graph format [see Data format Section 1].</p>
+<p> The different input files needed for the programs have to be in <tab> delimited text files in specified formats.</p>
 
-<p>3. Compiling and organizing pathway data for the source organisms in the Pathway Queries format [see Data format Section 2]. </p>
+<p><a href="Input.formats.html"> The input file formats are detailed here </a><p>
 
-<p>4. Compiling and organizing protein interaction data for organisms. We use the interaction data from String-dB as source interactions [see Data format Section 3]. </p>
+<p>2. Run Network Flow program to estimate the strength of homology between the source and target sequences.</p>
 
-<p>5. Run Network Flow program to estimate the strength of homology between the source and target sequences.</p>
+<p>3. Run the SumExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
 
-<p>6. Run the SumExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
+<p>4. Run the TransferAnnotations program to transfer the annotations from the source sequences to the target sequences.</p>
 
-<p>7. Run the TransferAnnotations program to transfer the annotations from the source sequences to the target sequences.</p>
+<p>5. Run the TransferInteractions program to estimate evidence for the presence and strength of protein interactions of the source organisms in the target organisms.</p>
 
-<p>8. Run the TransferInteractions program to estimate evidence for the presence and strength of protein interactions of the source organisms in the target organisms.</p>
-
-<p>9. Run Coexpression program on the expression of the interaction data to identify interaction units that are co-expressed.</p>
+<p>6. Run Coexpression program on the expression of the interaction data to identify interaction units that are co-expressed.</p>
 
 <p>10. Run NetworkAND program to identify protein complexes that are interacting and are co-expressed in the target organisms.</p>
 
 <p>11. Run Coexpression program on the pathway expressions to identify enzymes and pathways that are co-expressed.</p>
 
 
-<a href="Input.formats.html"> Input formats </a>
+<p><a href="Input.formats.html"> Input formats </a><p>
 
 
 <p>The software was developed in JAVA on GNU/Linux operating system with support for multithreading. It is free for noncommercial use.</p>
