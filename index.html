@@ -24,17 +24,23 @@ body{margin-right:60pt;}
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" height="83">
   <tr>
     <td rowspan="4" height="83">
-    <a href="http://bioinfo.vanderbilt.edu/netwalker">
-    <img border="0" width="150" height="134" src="netwalker1.png"></a></td>
+    <a href="http://orthofuzz.github.io/">
+    <img border="0" width="150" height="134" src="titlefigure.png"></a></td>
     <td height="15"><font color="#828282">
-    <font face="Arial Black" size="6">NetWalker</font><font face="Arial" size="6"><b>&nbsp;&nbsp;&nbsp;
+    <font face="Times New Roman Italic" color="#FF0000" size="8">Orthofuzz - </font><font face="Times New Roman Italic" size="8"><b><i>&nbsp;&nbsp;&nbsp;
     </b></font></font></td>
   </tr>
   <tr>
-    <td width="82%" height="28"><font face="Arial" color="#828282"><b><i>http://bioinfo.vanderbilt.edu/netwalker</i></b></font></td>
+    <td width="82%" height="28"><font face="Times New Roman Italic" color="#FF0000" size="6"><b><i>A java library for functional annotation and pathway analysis of denovo assembled 
+RNA-Seq data
+</i></b></font></td>
+  </tr>
+  
+  <tr>
+    <td width="82%" height="28"><font face="Times New Roman Italic" color="#FF0000 "><b><i>http://orthofuzz.github.io/</i></b></font></td>
   </tr>
   <tr>
-    <td width="82%" height="28"><font face="Arial" color="#828282"><b><i>Vanderbilt University</i></b></font></td>
+    <td width="82%" height="28"><font face="Times New Roman Italic" color="#FF0000"><b><i>Nikolau Group - BBMB/BCB - Iowa State University</i></b></font></td>
   </tr>
 </table>
 <hr color="ff9900">
@@ -45,22 +51,200 @@ body{margin-right:60pt;}
 <span lang="EN-US" style="font-size: 12.0pt; font-family: Arial">
 <ul>
 <li><b>Introduction:</b><br>
-<br>
-NetWalker is based on the random walk analysis described in Zhang et al (see the citation below). It is similar to GeneWanderer (Kohler et al., Am J Hum Genet, 2008). However, a statistical analysis is implemented to evaluate the random walk results.<br><br> 
-The random walk technique exploits the global structure of a network (graph) by simulating the behavior of a random walker on a graph. 
-From a starting node, the walker selects a neighbor of it at random and moves to the neighboring node.
-Then the walker selects a neighbor of this node at random and moves to it, so on and so forth. 
-The sequence of nodes selected this way is a random walk on the graph. 
-In a variant of the random walk implemented in NetWalker, the walker may also choose to teleport to the start node with a certain probability, called restart probability.
-The restart probability enforces a restriction on how far the random walker can get away from the start node. 
-<br><br> 
-In the current version of NetWalker, the walker can start from an input list of nodes provided by a user with equal probability. 
-The final score of a node in the network is defined as the steady-state probability that the random walker would stay at the node.
-To assess the statistical significance of the scores, we let the random walker start from the same number of randomly selected nodes to calculate random scores for each node. 
-This process is repeated to generate multiple (e.g. 1000) sets of random scores. 
-Then, for each node, a local <i>p</i> value is estimated by comparing the real score to random scores from the same node, and a global <i>p</i> value is estimated by comparing the real score to random scores from all nodes. 
-A significant global <i>p</i> value indicates the overall significance of the node with regard to the input nodes, while a significant local <i>p</i> value ensures that the significance is not simply due to network topology. 
-<br><br>
+
+<p><b>Orthofuzz : </b>A java library for functional annotation and pathway analysis of denovo assembled </p>
+
+<p>RNA-Seq data</p>
+
+<p>1. Overview</p>
+
+<p>2. Key problems in the data that are addressed</p>
+
+<p>3. Describe the programs – what do they take in, what do they generate.</p>
+
+<p>4. Describe the statistics section.</p>
+
+<p>5. Describe the pipeline.</p>
+
+<p><b>Keywords:</b> source organisms: organisms, the annotations of which are used as sources of functional annotations, source sequences: sequences from the source organisms, target organism: the denovo sequenced organism, which we are analyzing, target sequences: sequences from target organisms.</p>
+
+<p><b>List of External Packages used: </b></p>
+
+<p>Overview:</p>
+
+<p>The Orthofuzz package positions contigs assembled de-novo from RNA-Seq short read data among protein sequences obtained from phylogenetic neighbors of the target organism in a muti-organism pairwise sequence similarity network using pairwise BLAST scores.</p>
+
+<p>A series of java programs which uses network topology and edge weights are then utilized to carry out analysis of the RNA-Seq data. The package include the following interdependent java programs:</p>
+
+<p>1. <b>TransferAnnotations.jar:</b> Transfers functional annotations from the source sequences to the target sequences.</p>
+
+<p>2. <b>SummarizeExpressions.jar:</b> Summarizes expression levels of contigs highly homologous to a set of query sequences.</p>
+
+<p>3. Uses the SummarizeExpression.jar to estimate expression levels of enzymes in metabolic pathways.</p>
+
+<p>4. <b>GeneSetEnrichmentStats.jar:</b> Generate Gene set enrichment statistics of enzymes and metabolic pathways. </p>
+
+<p>5. <b>PredictInteractions.jar:</b> Generates hypothesis about interaction networks and protein complexes, which are known to interact with each other and is supported by co-expression of their members.</p>
+
+<p>6. <b>GeneListStatistics.jar:</b> Generate Gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs.</p>
+
+<p>7. <b>ParalellCoexpression.jar:</b> Estimates pearson correlation of expression data using paralellColt java package.</p>
+
+<p>8. <b>FindRepresentativeCliques.jar:</b> Finds representative cliques in a graph.</p>
+
+<p>A set of organisms in the phylogenetic neighborhood of with assigned functional annotations are chosen and All vs All BLAST carried out on translated and protein sequences to define an All vs All pairwise sequence similarity network.</p>
+
+<p>The topological neighborhood of the pairwise sequence similarity networks and BLAST bit scores are then used to transfer functional annotations from source organisms to targets, summarize gene-expression values of gene sets and predict interaction relationships between the denovo contigs.</p>
+
+<p>Key concepts [Manuscript under preparation]:</p>
+
+<p>1. The fragmented nature and the high identity between sub-groups of the contigs make the current approach of assignment of contigs to the best hits in the source organisms [Table X] error-prone [Figure X]. </p>
+
+<p>2. Protein sequences from the same gene family share more neighbors with higher edge weights compared to those that just share functional domains [Figure X].</p>
+
+<p>3. Random walking with restart on an edge-weighted network captures high edge weights and topological neighborhood to give probabilistic definition of network neighborhood [Figure X].</p>
+
+<p>There are four algorithms at the core of the package [Refer Manuscript]:</p>
+
+<p>1. Random walk with restart on an edge weighted network starting from a set of start nodes.</p>
+
+<p>2. Estimate summary expression value of the topological neighbors of a set of nodes.</p>
+
+<p>3. Transfer functional annotations from source organisms to target organisms.</p>
+
+<p>4. Transfer interactions from source organisms to the target organisms.</p>
+
+<p>5. Modified Tomita Algorithm to identify representative cliques in sequence similarity networks.</p>
+
+<p>1. Edge Weighted Random Walk with restart</p>
+
+<p>2. Permutation Statistics</p>
+
+<p>Overview of the workflow:</p>
+
+<p>1. Defining the pairwise sequence similarity network: </p>
+
+<p>2. Collecting annotations from source organisms and formatting the source annotations in the annotations graph format [see Data format Section 1].</p>
+
+<p>3. Compiling and organizing pathway data for the source organisms in the Pathway Queries format [see Data format Section 2]. </p>
+
+<p>4. Compiling and organizing protein interaction data for organisms. We use the interaction data from String-dB as source interactions [see Data format Section 3]. </p>
+
+<p>5. Run Network Flow program to estimate the strength of homology between the source and target sequences.</p>
+
+<p>6. Run the SumExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
+
+<p>7. Run the TransferAnnotations program to transfer the annotations from the source sequences to the target sequences.</p>
+
+<p>8. Run the TransferInteractions program to estimate evidence for the presence and strength of protein interactions of the source organisms in the target organisms.</p>
+
+<p>9. Run Coexpression program on the expression of the interaction data to identify interaction units that are co-expressed.</p>
+
+<p>10. Run NetworkAND program to identify protein complexes that are interacting and are co-expressed in the target organisms.</p>
+
+<p>11. Run Coexpression program on the pathway expressions to identify enzymes and pathways that are co-expressed.</p>
+
+<p>1. Input files: </p>
+
+<p>a. Pairwise sequence similarity network. </p>
+
+<p>The de-novo assembled contig sequences should be translated and BLASTed against the protein sequences from the source organisms. Each sequences form the nodes of the network and the bit-score from BLAST forms the edge weight. BLOSUM62 is used as the transition matrix. We use mpiblast for faster runtimes (See Scripts file for example runs). The BLAST results are parsed to get network files in the format: </p>
+
+<p>Sequence1&lt;tab&gt;Sequence2&lt;tab&gt;BitScore&lt;tab&gt;e-value. All hits with e-value &lt; cut-off are retained by default. The user can set this parameter.</p>
+
+<font size="2">
+<p>AT1G01010.1 AT1G02230.1 143 1e-33</p>
+
+<p>AT1G01010.1 AT1G02250.1 139 2e-32</p>
+
+<p>AT1G01010.1 AT1G33060.1 107 6e-23</p>
+
+<p>AT1G01010.1 AT1G33060.2 107 6e-23</p>
+
+<p>AT1G01010.1 AT3G04420.1 115 4e-25</p>
+
+<p>AT1G01010.1 AT3G04420.2 108 3e-23</p>
+
+<p>AT1G01010.1 AT3G10480.1 102 3e-21</p>
+
+<p>AT1G01010.1 AT3G10480.2 101 5e-21</p>
+
+<p>AT1G01010.1 AT3G10490.1 103 1e-21</p>
+
+<p>AT1G01010.1 AT3G49530.1 108 3e-23</p>
+
+</font>
+<p>b. Create source annotation network. The source annotation network should be of the following format.</p>
+
+<p><i>Annotation&lt;tab&gt;Annotation Type&lt;tab&gt;Annotation Source&lt;tab&gt; Annotation Weight</i></p>
+
+<font size="2">
+<p>1,2-alpha-L-fucosidases Names AT4G34260.1 Tair 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g183700.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g185000.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g185350.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g198200.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre04.g214650.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre06.g302050.t1.2 Chlamy 1.0</p>
+
+<p>1-amino-cyclopropane-1-carboxylate synthase 12 Names AT5G51690.1 Tair 1.0</p>
+
+<p>1-amino-cyclopropane-1-carboxylate synthase 2 Names AT1G01480.1 Tair 1.0</p>
+
+</font>
+<p>CreateAnnotationGraph.jar DirectorywithSourceAnnotations </p>
+
+<p>can be used to convert tab formulated source annotation data to the source annotation graph format shown in section 1.b</p>
+<font size="2">
+<p>AT1G01010.1 PF02365</p>
+
+<p>AT1G01020.1 PF04161</p>
+
+<p>AT1G01020.2 PF04161</p>
+
+<p>AT1G01030.1 PF02362</p>
+
+<p>AT1G01040.1 PF03368</p>
+
+<p>AT1G01040.1 PF00271</p>
+
+<p>AT1G01040.1 PF00636</p>
+
+<p>AT1G01040.1 PF02170</p>
+
+<p>AT1G01040.1 PF00035</p>
+
+<p>AT1G01040.1 PF04851</p>
+</font>
+
+<p>c. Pathway Query File:</p>
+
+<p>Pathway&lt;tab&gt;Protein_Family_Name&lt;tab&gt;Protein_Family_Abbreviation&lt;tab&gt;EC_number&lt;tab&gt;Queries </p>
+
+<p>Example Rows:</p>
+<font size="2">
+<p>Acetate_Assimilation Acyl-CoA_synthetase ACS1 6.2.1.1 AT5G36880.1,AT5G36880.2,Cre07.g353450.t1.2,Cre01.g055408.t1.1,Cre01.g071662.t1.1 </p>
+
+<p>Aminoacid_metabolism Alanine_aminotransferase ALT 2.6.1.2 AT1G17290.1,AT1G23310.1,AT1G23310.2,AT1G70580.1,AT1G70580.2,AT1G70580.3,AT1G70580.4,AT1G72330.1,AT1G72330.2,AT1G72330.3,Cre06.g284700.t1.2,Cre10.g451950.t1.2 </p>
+
+<p>Aminoacid_metabolism Alanine-glyoxylate_aminotransferase,_Alanine-glyoxylate_transaminase_1_(AGT1) AGT1 2.6.1.44,2.6.1.45,2.6.1.51 AT2G13360.1,AT2G13360.2,Cre01.g005150.t1.1,Cre06.g294650.t1.2 </p>
+
+<p>Notes: Columns without data should have “-- “ in it.</p>
+</font>
+<p>For Example:</p>
+
+<font size="2">
+<p>CCM ABC-type transporter HLA3/MRP1 -- Cre02.g097800.t1.3,AT2G07680.1</p>
+</font>
+
+
+
 The software was developed in C++ on GNU/Linux operating system with support for multithreading. It is free for noncommercial use.
 <br><br>
 <li><b>Source code:</b><br>
