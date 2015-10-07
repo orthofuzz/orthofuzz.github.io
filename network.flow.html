@@ -1,0 +1,33 @@
+<p><b>NetworkFlow.jar:</b> Runs random walk with restart from a set of query sequences and estimates probability to end the walk in K  step neighbors of the queries in pairwise-sequence similarity network.</p>
+
+<p>Program parameters:</p>
+
+<p>#input files</p>
+
+<p>Qmap = the query map file in the required format</p>
+
+<p>BlastNet = Blast Results in the required format</p>
+
+<p># RWR parameters</p>
+
+<p>threshold_cutoff = cut-off L1 norm (default = 0.0001)</p>
+
+<p>loop_cutoff = maximum number of loops (default = 50)</p>
+
+<p>step_size = max number of random walk steps (default = 2)</p>
+
+<p>replicates = replicates for permutation test (default = 50)</p>
+
+<p>#output parameters</p>
+
+<p>pop_filename = filename for reporting permutation stats</p>
+
+<p>Flow_filename = file name of Flow Statistics</p>
+
+<p>Usage:</p>
+
+<p>java -jar NetworkFlow.jar BlastNet QueryMaps threshold_cutoff loop_cutoff step_size replicates output_population output_flowstats.</p>
+
+<p>Example run:</p>
+
+<p>/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar NetworkFlow.jar files/BlastResults/1e-20/AllvsAll.1e-20.abcd files/StringDB/tair/Tair.withinteractiondata.list 0.0001 25 2 50 files/Results/Interactions/Population.1e-20.txt files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt</p>
