@@ -96,34 +96,21 @@ RNA-Seq data
 <p><b> The series of questions the orthofuzz will answer are listed below ! </b><p>
 
 
- <h4>1. Given a set of query genes representing an enzyme, find the homologs of those genes in the new organism/organisms.</h4>
-<p><a href="network.flow.html"> NetworkFlow.jar</a><p>
-<p> program takes lists of query maps as input and report the homologs in the new organism. <p>
+<p>1. Given a set of query genes in the network, <b>NetworkFlow.jar</b> will find the homologs of the queries in the network and report global and organism normalized scores representing the strength of homology.</p>
 
+<p>2. Given the source sequences and their functional annotations, <b>TransferAnnotations.jar </b>will transfers functional annotations from the source sequences to the target sequences.</p>
 
- <h4>2. Given a pairwise All vs All BLAST network of source and target sequences and the functional annotations of source sequences, assign functional annotations to the target sequences </h4>
-<p><a href=“transferannotations.html"> TransferAnnotations.jar</a><p>
-<p> program transfers annotations from source organisms to targets <p>
+<p>3. Given mappings to genes in source organisms to enzymes and pathways, <b>TransferExpressions.jar</b> will find homologs of the query sets in the new organisms, summarize gene expression values for each query. The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
 
+<p>4. Given a list of contigs, <b>GeneListStatistics.jar</b> will generate gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs. The enrichment statistics are estimated using EASE scores, which is a modified form of Fisher Exact Test for enrichment.</p>
 
+<p>5. If genes in the source organisms are known to interact with each other, <b>PredictInteractions.jar </b>will find homologs of the interacting units in the target organism and report a score (0-1) estimated by finding the geometric mean of the interaction scores and the orthofuzz scores. It also summarizes the expression level of the interaction units in the target organisms.</p>
 
+<p>6. Better strength to this prediction can be obtained by finding interaction-units that are correlated with each other. <b>ParalellCoexpression.jar </b>Estimates pearson correlation of expression data using paralellColt java package. </p>
 
-<p>1. <b>TransferAnnotations.jar:</b> Transfers functional annotations from the source sequences to the target sequences.</p>
-
-<p>2. <b>SummarizeExpressions.jar:</b> Summarizes expression levels of contigs highly homologous to a set of query sequences.</p>
-
-<p>3. Uses the SummarizeExpression.jar to estimate expression levels of enzymes in metabolic pathways.</p>
-
-<p>4. <b>GeneSetEnrichmentStats.jar:</b> Generate Gene set enrichment statistics of enzymes and metabolic pathways. </p>
-
-<p>5. <b>PredictInteractions.jar:</b> Generates hypothesis about interaction networks and protein complexes, which are known to interact with each other and is supported by co-expression of their members.</p>
-
-<p>6. <b>GeneListStatistics.jar:</b> Generate Gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs.</p>
-
-<p>7. <b>ParalellCoexpression.jar:</b> Estimates pearson correlation of expression data using paralellColt java package.</p>
-
-<p>8. <b>FindRepresentativeCliques.jar:</b> Finds representative cliques in a graph.</p>
-
+<b>7. FindRepresentativeCliques.jar </b>finds clusters in the network, first by finding representative cliques in the network and then running NetworkFlow.jar to find weak members of the clusters.
+<h4> The program parameters </h4>
+<p><a href="network.flow.html"> Click here to see how to use the programs</a><p>
 
 
 <p>Overview of the workflow:</p>
@@ -134,9 +121,9 @@ RNA-Seq data
 
 <p><a href="Input.formats.html"> The input file formats are detailed here. </a><p>
 
-<p>2. Run Network Flow program to estimate the strength of homology between the source and target sequences.</p>
+<p>2. Run NetworkFlow program to estimate the strength of homology between the source and target sequences.</p>
 
-<p>3. Run the SumExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
+<p>3. Run the TransferExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
 
 <p>4. Run the TransferAnnotations program to transfer the annotations from the source sequences to the target sequences.</p>
 
@@ -150,6 +137,7 @@ RNA-Seq data
 
 
 <p><a href="networkflow.html"> Input formats </a><p>
+
 
 
 

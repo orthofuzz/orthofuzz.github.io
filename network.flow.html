@@ -1,28 +1,28 @@
-<p><b>NetworkFlow.jar:</b> Runs random walk with restart from a set of query sequences and estimates probability to end the walk in K  step neighbors of the queries in pairwise-sequence similarity network.</p>
+<p><b>NetworkFlow.jar:</b> Runs random walk with restart from a set of query sequences and estimates probability to end the walk in K  = step neighbors of the queries in pairwise-sequence similarity network.</p>
 
 <p>Program parameters:</p>
 
 <p>#input files</p>
 
-<p>Qmap = the query map file in the required format</p>
+<p>Qmap  the query map file in the required format</p>
 
-<p>BlastNet = Blast Results in the required format</p>
+<p>BlastNet  = Blast Results in the required format</p>
 
 <p># RWR parameters</p>
 
-<p>threshold_cutoff = cut-off L1 norm (default = 0.0001)</p>
+<p>threshold_cutoff  = cut-off L1 norm (default  = 0.0001)</p>
 
-<p>loop_cutoff = maximum number of loops (default = 50)</p>
+<p>loop_cutoff  = maximum number of loops (default  = 50)</p>
 
-<p>step_size = max number of random walk steps (default = 2)</p>
+<p>step_size  = max number of random walk steps (default  = 2)</p>
 
-<p>replicates = replicates for permutation test (default = 50)</p>
+<p>replicates  = replicates for permutation test (default  = 50)</p>
 
 <p>#output parameters</p>
 
-<p>pop_filename = filename for reporting permutation stats</p>
+<p>pop_filename  = filename for reporting permutation stats</p>
 
-<p>Flow_filename = file name of Flow Statistics</p>
+<p>Flow_filename  = file name of Flow Statistics</p>
 
 <p>Usage:</p>
 
@@ -31,3 +31,79 @@
 <p>Example run:</p>
 
 <p>/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar NetworkFlow.jar files/BlastResults/1e-20/AllvsAll.1e-20.abcd files/StringDB/tair/Tair.withinteractiondata.list 0.0001 25 2 50 files/Results/Interactions/Population.1e-20.txt files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt</p>
+
+<p><b>TransferExpressions.jar:</b> Summarizes expression level and generates gene-set statistics for Query Gene-Sets.</p>
+
+<p>Program parameters:</p>
+
+<p>#input files</p>
+
+<p>Qmap  = the query map file in the required format</p>
+
+<p>Expr1,Expr2  = comma seperated expression files in the required format</p>
+
+<p>BlastNet  = Blast Results in the required format</p>
+
+<p># RWR parameters</p>
+
+<p>threshold_cutoff  = cut-off L1 norm (default  = 0.0001)</p>
+
+<p>loop_cutoff  = maximum number of loops (default  = 50)</p>
+
+<p>step_size  = max number of random walk steps (default  = 2)</p>
+
+<p>replicates  = replicates for permutation test (default  = 50)</p>
+
+<p>#output parameters</p>
+
+<p>outputfilename  = filename starts with this</p>
+
+<p>max.norm cutoff  = cut_off_max.normalized score OR</p>
+
+<p>pvalue cut_off  = report all homologs with orthofuzz p-value &lt; pvalue cutoff</p>
+
+<p>Usage:</p>
+
+<p>java -jar TranferExpression.jar Qmap Expr1,Expr2 BlastNet threshold_cutoff loop_cutoff step_size replicates outputfilename max.norm_cutoff/p.value_cutoff</p>
+
+<p>Example run:</p>
+
+<p>/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar TranferExpression.jar files/SourceAnnotations/Biocyc/maps/aracyc.chlamycyc.map files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt,files/ExpressionSummary/Expression_Big/Expression.unmapped.formatted.FPKM files/BlastResults/Networks/AllvsAll.1e-20.abcd 0.0001 50 2 50 files/Results/Pathways/Biocyc/Pathway_Expressions_biocyc_ Ehux 0.80</p>
+
+<p><b>TransferAnnotations.jar:</b> Summarizes expression level and generates gene-set statistics for Query Gene-Sets.</p>
+
+<p>Program parameters:</p>
+
+<p>#input files</p>
+
+<p>Qmap  = the query map file in the required format</p>
+
+<p>Expr1,Expr2  = comma seperated expression files in the required format</p>
+
+<p>BlastNet  = Blast Results in the required format</p>
+
+<p># RWR parameters</p>
+
+<p>threshold_cutoff  = cut-off L1 norm (default  = 0.0001)</p>
+
+<p>loop_cutoff  = maximum number of loops (default  = 50)</p>
+
+<p>step_size  = max number of random walk steps (default  = 2)</p>
+
+<p>replicates  = replicates for permutation test (default  = 50)</p>
+
+<p>#output parameters</p>
+
+<p>outputfilename  = filename starts with this</p>
+
+<p>max.norm cutoff  = cut_off_max.normalized score OR</p>
+
+<p>pvalue cut_off  = report all homologs with orthofuzz p-value &lt; pvalue cutoff</p>
+
+<p>Usage:</p>
+
+<p>java -jar TranferExpression.jar Qmap Expr1,Expr2 BlastNet threshold_cutoff loop_cutoff step_size replicates outputfilename max.norm_cutoff/p.value_cutoff</p>
+
+<p>Example run:</p>
+
+<p>/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx240G -XX:ParallelGCThreads=2 -jar TransferAnnotations_Braunii.jar files/SourceAnnotations/AnnotationsGraph.txt files/Results/Annotations/Fflowwithstats.1e-20.wrst.filtered.0.7.txt files/OtherData/Expression/Expression.TMM.formatted_for.orthofuzz.txt files/BlastResults/Networks/1e-20/AllvsAll.1e-20.abcd_Best_Hits.map U572 files/Results/Annotations/Contig_Annotations.1e-20.0.7.txt files/Results/Annotations/Contig_AnnotationGraph.1e-20.0.7.txt files/Results/Annotations/Contig_Annotations.1e-20.0.7.summary.txt</p>
