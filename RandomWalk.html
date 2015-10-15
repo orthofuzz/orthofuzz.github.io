@@ -1,0 +1,44 @@
+<p>
+    <em><h3>RandomWalkwithRestart.jar:</h3></em>
+</p>
+<p>
+    <em> </em>
+</p>
+<p>
+    Let <em>G = (V, E)</em> be the graph representing a pairwise sequence similarity network, where <em>V</em> is the set of nodes (sequences), and <em>E</em>
+    is the set of weighted undirected edges, where the bit-score from BLAST weight, which shows the strength of similarity between sequence pairs, is assigned
+    as edge weights. We define the homology of a node <em>v</em> to set of start nodes <em>Q</em>, <em>p</em><em><sub>q</sub></em><em>(v)</em>, as follows:
+</p>
+<p>
+    The random walk with restart method simulates a random walker that starts from one of the start nodes in <em>q</em>. At every step, the walker selects
+    among the available neighbors, based on edge weights with probability (1-<em>r)</em>, or goes back to query set <em>Q</em>, with probability <em>r</em>.
+    The restart probability <em>r</em> imposes a restriction on how far the random walker can get away from the start nodes <em>Q</em>. With <em>r</em> close
+    to 1, the probability vector reflects the local structure around Q, and as <em>r</em> gets close to 0, a more global view is observed.
+</p>
+<p>
+    The local structure around Q being the determinant for identifying sequence homology, the default setting for <em>r </em>in Orthofuzz is 0.33.
+</p>
+<p>
+    The probability <em>p</em><em><sub>v</sub></em><em><sup>t</sup></em>, the probability of the random walker to be at node v at step t, is initialized to 1/|Q| for nodes in the
+    query set and to 0 for all the remaining nodes.
+</p>
+<p>
+The steady state probability <em>p</em><em><sub>v</sub></em><em><sup>final</sup></em> is a measure of the homology of the node <em><sup>final</sup></em> to the query set Q. The <em>p</em>    <em><sup>final</sup></em><em> </em>is estimated using iterative matrix operation [Figure 1]. 
+    
+ <h4>Figure 1: Random Walk with Restart Formula:</h4>
+<a href="images/RWR.big.png">
+    <img alt="Link not working" src="images/RWR.png"/>
+</a>
+<p>
+<h4>Downloads:</h4>
+<a href="RandomWalkCluster.latex.pdf">Implementation algorithm</a>
+</p>
+<p>
+<a href="Input.formats.html"> Check here for parameters of the program </a>
+</p>
+<p>
+<a href="Input.formats.html"> Look here for an example run </a>
+</p>
+<p>
+<a href="RandomWalkCluster.latex.pdf">Download the jar file here</a>
+</p>
