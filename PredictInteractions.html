@@ -1,0 +1,55 @@
+<p>
+    <b>PredictInteractions.jar:</b></p>
+    <p><a href="http://string-db.org/"> StringDB Interaction Data </a> has a collection of known and predicted protein interactions including direct (physical) and indirect (functional) associations derived from genomic context, high-throughput experiments, (Conserved) Coexpression and literature mining. They have quantitatively integrated data from the sources for different organisms and transfered information between them based on orthology when applicable.As of October 15th, 2015, the database covers 9'643'763 proteins from 2'031 organisms.
+</p>    
+    
+<p>
+    
+</p>
+The interaction scores were normalized by 1000 (Max possible score) to scale them to (0-1) level needed for the software.
+
+
+</p>
+
+<p>
+    C0-C3 are the contigs identified as homologs of Query Sets Q1 and Q2. E(X) is the normalized expression level of X. qxcy is the within species normalized
+    orthofuzzscore (qx,cy) obtained by querying the network using the query set Q.
+</p>
+<h4>Figure 1: Transfer Expression algorithm:</h4>
+<a href="images/PredictInteractions.small.png">
+    <img alt="Link not working" src="images/PredictInteractions.small.png"/>
+</a>
+<a href="images/TranfserAnnotations.matrix.png">
+    <img alt="Link not working" src="images/TranfserAnnotations.matrix.png"/>
+</a>
+<p>
+    Figure : Annotation flow network: A1-A3 are annotations of source sequences S1, S2 and S3. axsy represents the user-defined confidence of the annotation ax
+    to be associated with sequence sy. sxty is the maximum score normalized orthofuzz score(sx,ty) obtained by querying the pairwise sequence similarity
+    network using sx.
+</p>
+
+
+<h4>Figure 2: Transfer Expression protocol:</h4>
+<a href="images/TransferExpression.flowchart.small.png">
+    <img alt="Link not working" src="images/TransferExpression.flowchart.small.png"/>
+</a>
+
+<p>
+    As shown in the figure X, the annotation scoring and assignment can be defined as a problem of multiplying the source annotation matrix with the orthofuzz
+    matrix as shown in the figure X.
+</p>
+
+
+<p>
+<h4>Downloads:</h4>
+<a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>
+</p>
+<p>
+<a href="Input.formats.html"> Check here for parameters of the program </a>
+</p>
+<p>
+<a href="Input.formats.html"> Look here for an example run </a>
+</p>
+<p>
+<a href="RandomWalkCluster.latex.pdf">Download the jar file here</a>
+</p>

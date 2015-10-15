@@ -11,7 +11,7 @@
 </p>
 <p>
     The random walk with restart method simulates a random walker that starts from one of the start nodes in <em>q</em>. At every step, the walker selects
-    among the available neighbors, based on edge weights with probability (1-<em>r)</em>, or goes back to query set <em>Q</em>, with probability <em>r</em>.
+    among the available neighbors, based on edge weights of the neighbors of the node he is currently in, with probability (1-<em>r)</em>, or goes back to query set <em>Q</em>, with probability <em>r</em>.
     The restart probability <em>r</em> imposes a restriction on how far the random walker can get away from the start nodes <em>Q</em>. With <em>r</em> close
     to 1, the probability vector reflects the local structure around Q, and as <em>r</em> gets close to 0, a more global view is observed.
 </p>
@@ -19,11 +19,11 @@
     The local structure around Q being the determinant for identifying sequence homology, the default setting for <em>r </em>in Orthofuzz is 0.33.
 </p>
 <p>
-    The probability <em>p</em><em><sub>v</sub></em><em><sup>t</sup></em>, the probability of the random walker to be at node v at step t, is initialized to 1/|Q| for nodes in the
-    query set and to 0 for all the remaining nodes.
+    The probability <em>p</em><em><sub>v</sub></em><em><sup>t</sup></em>, the probability of the random walker to be at node v at step t, is initialized to 1/N for nodes in the
+    query set, where N is the number of nodes in the query set and to 0 for all the remaining nodes.
 </p>
 <p>
-The steady state probability <em>p</em><em><sub>v</sub></em><em><sup>final</sup></em> is a measure of the homology of the node <em><sup>final</sup></em> to the query set Q. The <em>p</em>    <em><sup>final</sup></em><em> </em>is estimated using iterative matrix operation [Figure 1]. 
+The steady state probability <em>p</em><em><sub>v</sub></em><em><sup>final</sup></em> is a measure of the homology of the node <em><sup>final</sup></em> to the query set Q. The <em>p</em>    <em><sup>final</sup></em><em> </em>is estimated using iterative matrix operations shown in figure 1. 
     
  <h4>Figure 1: Random Walk with Restart Formula:</h4>
 <a href="images/RWR.big.png">
@@ -31,7 +31,7 @@ The steady state probability <em>p</em><em><sub>v</sub></em><em><sup>final</sup>
 </a>
 <p>
 <h4>Downloads:</h4>
-<a href="RandomWalkCluster.latex.pdf">Implementation algorithm</a>
+<a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>
 </p>
 <p>
 <a href="Input.formats.html"> Check here for parameters of the program </a>

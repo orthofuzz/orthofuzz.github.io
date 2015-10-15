@@ -1,17 +1,8 @@
 
 <p>
-    The TransferAnnotations.jar program transfers the annotations from the AnnotationGraph to the target sequences, by first running
+    The TransferAnnotations.jar method queries the network using the source sequences with functional annotations, one at a time. The functional annotations are tranfered from the source nodes to their homologs identified by RandomWalkwithRestart.jar, called target sequences and scores are assigned to the annotation taking into account the quality of the source annotations (user-defined), the number of homologs of the target sequences that have the annotation and the orthofuzz score between the souce and the target sequence.</p>
+           
 </p>
-<p>
-    Random Walk Clustering on the network starting from each source node with annotation. The format of the AnnotationGraph can be found here.
-</p>
-
-
-<h4>Figure 1: TransferAnnotation protocol:</h4>
-<a href="images/TransferAnnotation.flowchart.big.png">
-    <img alt="Link not working" src="images/TransferAnnotation.flowchart.small.png"/>
-</a>
-
 
 <p>
     Figure : Annotation flow network: A1-A3 are annotations of source sequences S1, S2 and S3. axsy represents the user-defined confidence of the annotation ax
@@ -22,13 +13,27 @@
     As shown in the figure X, the annotation scoring and assignment can be defined as a problem of multiplying the source annotation matrix with the orthofuzz
     matrix as shown in the figure X.
 </p>
-<h4>Figure 2: TransferAnnotation algorithm:</h4>
+<h4>Figure 1: TransferAnnotation algorithm:</h4>
 <a href="images/TransferAnnotations.algorithm.big.png">
     <img alt="Link not working" src="images/TransferAnnotations.algorithm.small.png"/>
 </a>
 <a href="images/TranfserAnnotations.matrix.png">
     <img alt="Link not working" src="images/TranfserAnnotations.matrix.png"/>
 </a>
+
+
+<p>
+    Random Walk Clustering on the network starting from each source node with annotation. The format of the AnnotationGraph can be found here.
+</p>
+
+
+<h4>Figure 2: TransferAnnotation protocol:</h4>
+<a href="images/TransferAnnotation.flowchart.big.png">
+    <img alt="Link not working" src="images/TransferAnnotation.flowchart.small.png"/>
+</a>
+
+
+
 <p>
 <h4>Downloads:</h4>
 <a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>

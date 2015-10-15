@@ -74,8 +74,12 @@ RNA-Seq data
 <p><b>source organisms</b>: organisms, the annotations of which are used as sources of functional annotations.
 <b>source sequences</b>: sequences from the source organisms.
 <b>target organism</b>: the denovo sequenced organism, which we are analyzing.
-<b>target sequences</b>: sequences from target organisms.</p>
-</i>
+<b>target sequences</b>: sequences from target organisms.
+<b>G</b>: The All-vs-All Pairwise Sequence Similarity Network.
+<b>Node</b>: A sequence in the pairwise-sequence similarity network.
+
+</p>
+
 
 <p><b>List of External Packages used: </b></p>
 <a href="http://jung.sourceforge.net"> JUNG </a><a href="https://github.com/rwl/ParallelColt"> Paralellcolt </a>
@@ -87,46 +91,51 @@ RNA-Seq data
 <p><b>Output formats compatible with: </b>
 <a href="http://www.cytoscape.org/cy3.html"> Cytoscape3 </a>
 <a href="http://www.pathvisio.org/"> Pathvisio </a>
-<a href="http://www.paccanarolab.org/clusterone/ "> ClusterOne </a></p>                                          
+<a href="http://www.paccanarolab.org/clusterone/ "> ClusterOne </a>
+<a href="http://genepattern.broadinstitute.org "> Genepattern </a>
+</p>                                          
 
 
-<p><b> Programs in the package:</b> <br/> (Click on names to get detailed descriptions and download links)</p>
+<p><b> Programs in the package:</b> <br/> 
+(Click on names in <span style="color:#0000CC">BLUE</span> to get detailed descriptions and download links)</p>
 
 
-                                                  
-<p><a href="RandomWalk.html"<b>1. RandomWalkwithRestart.jar </b></a></p>
-<p><a href="transferannotations.html"<b>2. TransferAnnotations.jar </b></a></p>
-<p><a href="TransferExpression.html"<b>3. TransferExpression.jar </b></a></p>                  
-                                  
-
-
-<p> Given a set of query genes in the network, <a href="RandomWalk.html"> <b>RandomWalkwithRestart.jar</b></a> will find the homologs of the queries in the network and report global and organism normalized scores representing the strength of homology.</p>
-                                                                    
+                                            
+<p><a href="RandomWalk.html"<b>RandomWalkwithRestart.jar </b></a><br/>
+<a href="transferannotations.html"<b>TransferAnnotations.jar </b></a><br/>
+<a href="TransferExpression.html"<b>TransferExpression.jar </b></a><br/>
+<a href = "PredictInteractions.html"<b>PredictInteractions.jar </b></a>
+</p>                  
+                              
 <p>
-    The random walk with restart method can be used to compute the proximity of the nodes in the network from a single node or a set of nodes, which
-    facilitates querying the network for homologs of gene families with one or more members from different source organisms in the network.
+Previous work has shown that functional ortholog proteins tends to share more neighbors with higher edge weight when compared to weak homologs
+in All-vs-All pairwise sequence similarity networks. Edge weigted random walk with restart is a memory efficient and fast computational method for capturing both shared topological neighborhood and high edge-weight in a [0-1] score, thereby making it a very useful tool for measuring orthology between sequences and/or sets of sequences.      
 </p>
-                                                                        
+
+<p> Given a set of query nodes and an All-vs-All pairwise sequence similarity network, <a href="RandomWalk.html"<b>RandomWalkwithRestart.jar </b></a> reports a cluster of nodes in the network, which are members of or/and homologous to the query set, provide global and organism normalized scores representing the strength of homology of the node to the query-set and statistical significance obtained by permulation test.</p>                                                   
 <p>
-    The algorithm reports a cluster of nodes in the network, which are homologous to the query set, with the max normalized <em>orthoscore</em> [0-1] returned for each member node of the cluster indicating the strength of its homology to the query set.
+    The query-set can have a single node or a set of nodes from the same and/or multiple organisms, whose sequences are in the network. This facilitates querying the network for homologs of gene families with one or more members from different source organisms in the network.
+</p>                                                         
+                                                         
+<p>The max normalized <em>orthoscore</em> [0-1] returned for each member node of the cluster is a strong indicator of functional orthology. The RandomWalkwithRestart, therefore is a very powerful tool for [1] transferring functional informations we know about the query sets to the cluster members or for [2] summarizing information we know about the cluster-members to estimate summary statistics for the query-set.
 </p>
-                                                                        
-<p>
-    The orthoscore can be used to [1] transfer information we know about the query sets to the cluster members or for [2] summarizing information we know about the cluster-members to estimate summary statistics for the query.
-</p>                                                                          
-                                                                          
-<p><b>[1] From query sets to cluster members: </b></p>
+                                                         
+<p><b>[1] Transferring information from query sets to cluster members: </b>
+The standard approach for assigning functional annotations to denovo assembled sequences is based on the observation that there is a high probability for cross organism orthologs to share biological function. Previous work has shown that true orthologs tend to share 
+more neighbors with high edge weights. Since orthoscore captures this information, we can use the orthoscores for transferring functional annotations associated with the source sequences in the networks to the target sequences.                                                      </p>
 
-Given the source sequences and their functional annotations, <a href="transferannotations.html"<b>TransferAnnotations.jar method</b></a> will transfers functional annotations from the source sequences to the target sequences.</p> 
-                                                                                      
-<p>  The TransferAnnotations.jar method queries the network using the source sequences with functional annotations, one at a time. The functional annotations are tranfered from the source nodes to their homologs identified by RandomWalkwithRestart.jar, called target sequences and scores are assigned to the annotation taking into account the quality of the source annotations (user-defined), the number of homologs of the target sequences that have the annotation and the orthofuzz score between the souce and the target sequence.</p>
-                                                                        
+Given the source sequences and their functional annotations, <a href="transferannotations.html"<b>TransferAnnotations.jar </b></a> method will transfers functional annotations from the source sequences to the target sequences.</p> 
+                                                                                               
+If a gene X is known to interact with gene Y in one/many of the source organisms, <a href = "PredictInteractions.html"<b>PredictInteractions.jar </b></a> can use the RandomWalkwithRestart.jar to identify corresponding orthologs in the target organisms and predict possible contigs/sets of contigs which could be coding for proteins which interacts with each other in the target organisms. It generates output which can for input to clusterOne   which can identify possible interaction complexes in the target organisms.</p>
 
-<p>3. Given mappings to genes in source organisms to enzymes and pathways, <a href="TransferExpression.html"<b>TransferExpression.jar method</b></a> will find homologs of the query sets in the new organisms, summarize gene expression values for each query. The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
 
+<p>3. Given mappings to genes in source organisms to enzymes and pathways, <a href="TransferExpression.html"<b>TransferExpression.jar </b></a> method will find homologs of the query sets in the new organisms, summarize gene expression values for each query. The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
+
+                                                                                                            
+                                                                                                            
+                                                                                                            
 <p>4. Given a list of contigs, <b>GeneListStatistics.jar</b> will generate gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs. The enrichment statistics are estimated using EASE scores, which is a modified form of Fisher Exact Test for enrichment.</p>
 
-<p>5. If genes in the source organisms are known to interact with each other, <b>PredictInteractions.jar </b>will find homologs of the interacting units in the target organism and report a score (0-1) estimated by finding the geometric mean of the interaction scores and the orthofuzz scores. It also summarizes the expression level of the interaction units in the target organisms.</p>
 
 <p>6. Better strength to this prediction can be obtained by finding interaction-units that are correlated with each other. <b>ParalellCoexpression.jar </b>Estimates pearson correlation of expression data using paralellColt java package. </p>
 
