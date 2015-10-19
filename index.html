@@ -2,89 +2,37 @@
 
 <head>
 <style>
-body{color:black;font-family:"Verdana", "Arial", "Helvetica", "sans-serif";font-size:9pt;margin:0}
+body{color:black;font-family:"Verdana", "Arial", "Helvetica", "sans-serif";font-size:12pt;margin:0}
 td{color:black;font-family:"Verdana", "Arial", "Helvetica", "sans-serif";font-size:9pt}
 a:link       { text-decoration: none; color:#0000CC }
 a:visited    { text-decoration: none; color: #0000CC }a:hover      { color: #0000CC }
 </style>
 <style type="text/css">
-    
 body{margin-left:60pt;}
 body{margin-right:60pt;}
 body{text-align: justify;}
     
-    
-
-
-.gallerycontainer{
-position: relative;
-/*Add a height attribute and set to largest image's height to prevent overlaying*/
+figcaption {
+color: green;
 }
-
-.thumbnail img{
-border: 1px solid white;
-margin: 0 5px 5px 0;
-}
-
-.thumbnail:hover{
-background-color: transparent;
-}
-
-.thumbnail:hover img{
-border: 1px solid blue;
-}
-
-.thumbnail span{ /*CSS for enlarged image*/
-position: absolute;
-background-color: lightyellow;
-padding: 5px;
-left: -1000px;
-border: 1px dashed gray;
-visibility: hidden;
-color: black;
-text-decoration: none;
-}
-
-.thumbnail span img{ /*CSS for enlarged image*/
-border-width: 0;
-padding: 2px;
-}
-
-.thumbnail:hover span{ /*CSS for enlarged image*/
-visibility: visible;
-top: 0;
-left: 100px; /*position where enlarged image should offset horizontally */
-z-index: 50;
-}
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 </style>
 <title>Orthofuzz</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8”> 
+   
                                          
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">                                         
 </head>
 
 <body>
-                                        
-                                         
-                                         
+
+                                       
 <p align="center">
 <br>
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" height="83">
   <tr>
     <td rowspan="4" height="83">
-    <a href="http://orthofuzz.github.io/">
+    <a href="https://github.com/orthofuzz/">
     <img border="0" width="150" height="134" src="titlefigure.png"></a></td>
     <td height="15"><font color="#828282">
     <font face="Garamond" color="#000000" size="6"><i>ORTHOFUZZ</font><font face="Garamond" size="6"><b><i>&nbsp;&nbsp;&nbsp;
@@ -113,19 +61,104 @@ RNA-Seq data
 <ul>
 <li>
 
-<p align="center"><b> Gallery of interesting results ! </b></p>
-                                                            
                                                                    
-<div class="gallerycontainer">
+                                                                   
+  <!-- use jssor.slider.min.js instead for release -->
+    <!-- jssor.slider.min.js = (jssor.js + jssor.slider.js) -->
+    <script type="text/javascript" src="js/jssor.js"></script>
+    <script type="text/javascript" src="js/jssor.slider.js"></script>
+    <script>
+        jssor_slider1_starter = function (containerId) {
+            var options = {
+                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 0,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                }
+            };
 
-<a class="thumbnail" href="#thumb"><img src="images/results/CombinedImage.png" width="300px" height="200px" border="0" /><span><img src="images/results/CombinedImage.png" /><br /></span></a>
+            var jssor_slider1 = new $JssorSlider$(containerId, options);
+        };
+    </script>
+    <!-- Jssor Slider Begin -->
+    <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
+    <div id="slider1_container" style="position: relative; top: 0px; left: 110px; width: 1000px;
+        height: 450px; ">
 
-<a class="thumbnail" href="#thumb"><img src="images/results/Combined.Example2.png" width="300px" height="200px" border="0" /><span><img src="images/results/Combined.Example2.png" /><br /></span> </a> 
-<br />
-
-</div>
-
-                                                        
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 450px;
+            overflow: hidden;">
+            <div><img u="image" src="images/results/CombinedImage.png" /></div>
+            <div><img u="image" src="images/results/Combined.Example2.png" /></div>
+             <div><img u="image" src="images/results/CombinedImage.png" /></div>
+            <div><img u="image" src="images/results/Combined.Example2.png" /></div>
+            <div><img u="image" src="images/results/CombinedImage.png" /></div>
+            <div><img u="image" src="images/results/Combined.Example2.png" /></div>
+           
+        </div>
+        
+        <!--#region Arrow Navigator Skin Begin -->
+        <!-- Help: http://www.jssor.com/development/slider-with-arrow-navigator-jquery.html -->
+        <style>
+            /* jssor slider arrow navigator skin 03 css */
+            /*
+            .jssora03l                  (normal)
+            .jssora03r                  (normal)
+            .jssora03l:hover            (normal mouseover)
+            .jssora03r:hover            (normal mouseover)
+            .jssora03l.jssora03ldn      (mousedown)
+            .jssora03r.jssora03rdn      (mousedown)
+            */
+            .jssora03l, .jssora03r {
+                display: block;
+                position: absolute;
+                /* size of arrow element */
+                width: 55px;
+                height: 55px;
+                cursor: pointer;
+                background: url(images/a03.png) no-repeat;
+                overflow: hidden;
+            }
+            .jssora03l { background-position: -3px -33px; }
+            .jssora03r { background-position: -63px -33px; }
+            .jssora03l:hover { background-position: -123px -33px; }
+            .jssora03r:hover { background-position: -183px -33px; }
+            .jssora03l.jssora03ldn { background-position: -243px -33px; }
+            .jssora03r.jssora03rdn { background-position: -303px -33px; }
+        </style>
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora03l" style="top: 123px; left: 8px;">
+        </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora03r" style="top: 123px; right: 8px;">
+        </span>
+        <!--#endregion Arrow Navigator Skin End -->
+        <a style="display: none" href="http://www.jssor.com">Bootstrap Slider</a>
+        <!-- Trigger -->
+        <script>
+            jssor_slider1_starter('slider1_container');
+        </script>
+    </div>
+    <!-- Jssor Slider End -->                                                                  
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                
                                                                    
 <p><b>Overview:</b></p>
 
@@ -193,34 +226,119 @@ in All-vs-All pairwise sequence similarity networks. Edge weigted random walk wi
 <p> Given a set of query nodes and an All-vs-All pairwise sequence similarity network, <a href="RandomWalk.html"<b>RandomWalkwithRestart.jar </b></a> reports a cluster of nodes in the network, which are members of or/and homologous to the query set, provide global and organism normalized scores representing the strength of homology of the node to the query-set and statistical significance obtained by permulation test.</p>                                                   
 <p>
     The query-set can have a single node or a set of nodes from the same and/or multiple organisms, whose sequences are in the network. This facilitates querying the network for homologs of gene families with one or more members from different source organisms in the network.
-</p>                                                         
-                                                         
+</p>                     
+                                                                                                                
 <p>The max normalized <em>orthoscore</em> [0-1] returned for each member node of the cluster is a strong indicator of functional orthology. The RandomWalkwithRestart, therefore is a very powerful tool for [1] transferring functional informations we know about the query sets to the cluster members or for [2] summarizing information we know about the cluster-members to estimate summary statistics for the query-set.
 </p>
                                                          
 <p><b>[1] Transferring information from query sets to cluster members: </b>
-The standard approach for assigning functional annotations to denovo assembled sequences is based on the observation that there is a high probability for cross organism orthologs to share biological function. Previous work has shown that true orthologs tend to share 
-more neighbors with high edge weights. Since orthoscore captures this information, we can use the orthoscores for transferring functional annotations associated with the source sequences in the networks to the target sequences.                                                      </p>
+The standard approach for assigning functional annotations to denovo assembled sequences is based on the observation that there is a high probability for cross organism orthologs to share biological function. Previous work has shown that true orthologs tend to share more neighbors with high edge weights in pairwise All-vs-All pairwise sequence similarity network. Since orthoscore captures this information, we can use the orthoscores for transferring functional annotations associated with the source sequences in the networks to the target sequences.</p>
 
 Given the source sequences and their functional annotations, <a href="transferannotations.html"<b>TransferAnnotations.jar </b></a> method will transfers functional annotations from the source sequences to the target sequences.</p> 
                                                                                                
-If a gene X is known to interact with gene Y in one/many of the source organisms, <a href = "PredictInteractions.html"<b>PredictInteractions.jar </b></a> can use the RandomWalkwithRestart.jar to identify corresponding orthologs in the target organisms and predict possible contigs/sets of contigs which could be coding for proteins which interacts with each other in the target organisms. It generates output which can for input to clusterOne   which can identify possible interaction complexes in the target organisms.</p>
+If a gene X is known to interact with gene Y in one/many of the source organisms, <a href = "PredictInteractions.html"<b>PredictInteractions.jar </b></a> can use the RandomWalkwithRestart.jar to identify corresponding orthologs in the target organisms and predict interactions between contigs/sets of contigs which could be coding for proteins which interacts with each other in the target organisms.</p>
 
+<p><b>[2] Transferring information from the cluster members to summarize the query sets: </b>
 
-<p>3. Given mappings to genes in source organisms to enzymes and pathways, <a href="TransferExpression.html"<b>TransferExpression.jar </b></a> method will find homologs of the query sets in the new organisms, summarize gene expression values for each query. The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
-
+<p> Given mappings of gene-ids in the source organisms to enzymes, <a href="TransferExpression.html"<b>TransferExpression.jar </b></a> method will first use Randomwalkwithrestart.jar to find orthologs of the query sets in the new organisms, summarize the expression values in FPKM/TPM for each query and generate geneset statistics using the GeneSetStatistics.jar program described in the next section. </p>
                                                                                                             
-                                                                                                            
-                                                                                                            
-<p>4. Given a list of contigs, <b>GeneListStatistics.jar</b> will generate gene list statistics of lists of contigs to identify functional annotation terms enriched in lists of contigs. The enrichment statistics are estimated using EASE scores, which is a modified form of Fisher Exact Test for enrichment.</p>
+<p><b>[3] Tools to statistically analyze and summarize the results: </b></p>  
+                                                                                                    
+<p>[a] Given a list of L contigs, <b>GeneSetStatistics.jar</b> combines the p.values from differential expression analysis (reported by tools like DESeq2 and EdgeR) using the Fisher combined probability (FCP) method (Equation 1). The cumulative distribution function of the FCP value follows a Chi-Square distribution with 2L degrees of freedom. A chi-square test for the FCP statistic for 2L degrees of freedom gives the combined p-value for the contig-set.                                                     
+<h5></h5>
+<a href="images/FisherTransformation.png">
+    <img alt="Link not working" src="images/FisherTransformation.png"/> 
+</a>
+</p>
+                                                                                                    
+<p>There is also an option for estimating <b>permutation statistics</b> instead of the fisher transformation. We use the <a href="http://statweb.stanford.edu/~tibs/GSA/"<b>Gene Set Enrichment (GSA) </b></a> method proposed by Bradley Efron and Rob Tibshirani for the permutation test. The max. mean statistic is used as the test statistic. </p>
+<figure>                                                                     
+<a href="images/GSA-Max.Mean.Statistic.png">
+                                           <img alt="Link not working" src="images/GSA-Max.Mean.Statistic.png"/><figcaption> <b>Estimating the max. mean statistic for gene set testing:</b> <b>z</b> is the user-defined statistic that need to be tested. The default version uses mutual information or standard deviation of the expression data pooled across the conditions as the test statistic. But, the program can take the statistics of each contig as an input.</figcaption> 
+</a>                                                                     
+</figure>                                                                     
+
+<p>[b] Given a list of L contigs, <b>GeneListStatistics.jar</b> will report lists of functional annotation terms enriched in it. The EASE statistic, which is a modified version of Fisher Exact Test, is used to carry out gene list enrichment analysis. But, instead of using counts, the contig annotation graph generated by the <a href="transferannotations.html"<b>TransferAnnotations.jar </b></a> method is used for estimating the enrichment statistics. The edgeweigth of the Contig-Annotation graph is used instead of the counts in each categories.  </p>
 
 
-<p>6. Better strength to this prediction can be obtained by finding interaction-units that are correlated with each other. <b>ParalellCoexpression.jar </b>Estimates pearson correlation of expression data using paralellColt java package. </p>
 
+                                                                   
+<h5></h5>
+<a href="images/EASE_figure1.png">
+    <img alt="Link not working" src="images/EASE_figure1.png"/> 
+</a>
+                                                                   
+<h5></h5>
+<a href="images/EASE_figure2.png">
+    <img alt="Link not working" src="images/EASE_figure2.png"/> 
+</a>
+</p>
+<p>
+This has two advantages over regular gene list statistics. Firstly, this allows incorportation of quality of the annotation, number of sources with the annotation and the orthofuzz score, which captures the topological neighborhood of the contig in the sequence similarity network, to be incoporated into the scoring. Secondly, the method can candle all forms of annotations, irrespective of the type or source of annotation in the analysis. We incorporate, descriptions of terms, names of genes, gene ontology, protein domain terms, pathway names and types into the analysis. 
+</p> 
+
+                                                                   
+                                                                   
+<p>6. Better strength to this prediction can be obtained by finding interaction-units that are correlated with each other. <b>ParalellCoexpression.jar </b>Estimates pearson correlation of expression data using paralellColt java package. 
+<h5></h5>
+<figure>                                                             
+<a href="images/t.test.correlation.png">
+    <img alt="Link not working" src="images/t.test.correlation.png"/><figcaption> The correlation values are transformed to t-statistic which is then tested for significance with df = n-2</figcaption>
+</a>
+</figure>                                                            
+</p>
+
+                                                             
+<p>
+    Maximal Cliques:
+</p>
+<p>
+    The sequences in an All-vs-All pairwise sequence similarity network can be divided into (1) strong members of sequence clusters, (2) weak members of
+    multiple clusters and (3) singletons. Finding the maximal cliques in a sequence similarity graph can reveal the strong sequence clusters, which represents
+    the gene families conserved to different degrees across the organisms that are part of the network.
+</p>
+<p>
+    The cliques can then be used as queries to the RandomwalkwihRestart program to find the sequences in the network that are weak members. The combination of
+    the two methods thus allows for clustering of sequences in the network into clusters with each sequence assigned a fuzzy [0-1] strength of its membership
+    to the different clusters.
+</p>
+<p>
+    We have implemented the algorithm proposed by Eppstein, Loffler and Strash [ELS method] for listing all maximal cliques in a sparse graph (since sequence
+    similarity networks are sparse). Then a heuristic is used to filter the maximal cliques to retain just representative cliques. The representative cliques
+    are then used to query the network using RandomwalkwihRestart program to get fuzzy assignment of all the sequences in the network to 0, one or multiple
+    clusters with statistical significance of assignments estimated using permutation method.
+                                                                   
+</p>         
+
+
+<p>
+    Key steps in the implementation:
+</p>
+<p>
+    1. Bron Kerbosch Algorithm with Tomita&#8217s method for choosing pivots: The implementation of the BKBosch algorithm is shown here. We use the Tomita&#8217s
+strategy for choosing pivot vertices. The Tomita strategy is based on the observation that all maximal cliques must contain a non-neighbor of <strong><em>u</em></strong>, (where <strong><em>u</em></strong> itself is a non-neighbor). Therefore, given<em> <strong>P </strong></em>and    <strong><em>X</em></strong>, a pivot vertex <strong><em>v </em></strong>is chosen, which <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>&#x03F5;<!-- ϵ --></mi> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>X</mi> </math> and maximizes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x2229;<!-- ∩ --></mo> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> <mtext>&#xA0;</mtext> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> </math>. The recursive search space can now be limited
+    to each vertex <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>v</mi> <mo>&#x2208;<!-- ∈ --></mo> <mi>P</mi> <mi class="MJX-variant" mathvariant="normal">&#x2216;<!-- ∖ --></mi> <mtext>&#xA0;</mtext> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> </math>.
+</p>
+<p>
+    2. Eppstein, Loffler and Strash has shown that degeneracy ordering of the nodes in a graph greatly reduces the memory requirement for Tomita&#8217s algorithm
+for enumerating maximal cliques. Degeneracy <em>d </em>is the smallest number, such that all subgraphs of the graph contains vertices with degree &le; <em>d</em>. We use the method proposed by Matula and Beck to order the vertices by their degeneracy. Each vertex in a degeneracy ordering has at the most    <em>d </em>neighbors later than it in the ordering, where <em>d </em>is the degeneracy of the graph. This limits the size of <strong><em>P</em></strong>
+    within each recursive calls to be &le;  <em>d, </em>the degeneracy of the graph.
+</p>
+<p>
+    3. Heuristic optimizations to reduce search space: A size check is incorporated to ensure that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mi>P</mi> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>R</mi> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mo>&#x2265;<!-- ≥ --></mo> <mtext>&#xA0;</mtext> <mi>m</mi> <mi>i</mi> <mi>n</mi> <mo>.</mo> <mtext>&#xA0;</mtext> <mi>c</mi> <mi>l</mi> <mi>i</mi> <mi>q</mi> <mi>u</mi> <mi>e</mi> <mtext>&#xA0;</mtext> <mi>s</mi> <mi>i</mi> <mi>z</mi> <mi>e</mi> </math>. A heuristic is used to trim-edges off the All-vs-All
+    BLAST network based on e-value to reduce the size of the network to find the cliques. For each sequence, all edges with e-values &le; 1e-50 are retained.
+    If there are no hits with e-value &le; 1e-50, only the best hit is retained in the trimmed network.
+</p>                                 
+                                                                
+                                                                
+                                                                   
 <b>7. FindRepresentativeCliques.jar </b>finds clusters in the network, first by finding representative cliques in the network and then running NetworkFlow.jar to find weak members of the clusters.
 <h4> The program parameters </h4>
 <p><a href="network.flow.html"> Click here to see how to use the programs</a><p>
 
+                              
+<p>The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
+FisherTransformation.png
 
 <p>Overview of the workflow:</p>
 
@@ -310,4 +428,6 @@ Adarsh Jose (ajose<b>AT</b>iastate.edu)<br>
 </td>
 </tr></table>
 
+                                             
+                                             
 </body></html>
