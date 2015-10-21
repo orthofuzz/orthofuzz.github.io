@@ -1,0 +1,56 @@
+<p>
+    <em><h3>Maximal Cliques:</h3></em>
+</p>
+<p>
+    <em> </em>
+</p>
+<p>
+    The sequences in an All-vs-All pairwise sequence similarity network can be divided into (1) strong members of sequence clusters, (2) weak members of
+    multiple clusters and (3) singletons. Finding the maximal cliques in a sequence similarity graph can reveal the strong sequence clusters, which represents
+    the gene families conserved to different degrees across the organisms that are part of the network.
+</p>
+<p>
+    The cliques can then be used as queries to the RandomwalkwihRestart program to find the sequences in the network that are weak members. The combination of
+    the two methods thus allows for clustering of sequences in the network into clusters with each sequence assigned a fuzzy [0-1] strength of its membership
+    to the different clusters.
+</p>
+<p>
+    We have implemented the algorithm proposed by Eppstein, Loffler and Strash [ELS method] for listing all maximal cliques in a sparse graph (since sequence
+    similarity networks are sparse). Then a heuristic is used to filter the maximal cliques to retain just representative cliques. The representative cliques
+    are then used to query the network using RandomwalkwihRestart program to get fuzzy assignment of all the sequences in the network to 0, one or multiple
+    clusters with statistical significance of assignments estimated using permutation method.
+                                                                   
+</p>         
+
+
+<p>
+    Key steps in the implementation:
+</p>
+<p>
+    1. Bron Kerbosch Algorithm with Tomita&#8217s method for choosing pivots: The implementation of the BKBosch algorithm is shown here. We use the Tomita&#8217s
+strategy for choosing pivot vertices. The Tomita strategy is based on the observation that all maximal cliques must contain a non-neighbor of <strong><em>u</em></strong>, (where <strong><em>u</em></strong> itself is a non-neighbor). Therefore, given<em> <strong>P </strong></em>and    <strong><em>X</em></strong>, a pivot vertex <strong><em>v </em></strong>is chosen, which <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>&#x03F5;<!-- ϵ --></mi> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>X</mi> </math> and maximizes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x2229;<!-- ∩ --></mo> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> <mtext>&#xA0;</mtext> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> </math>. The recursive search space can now be limited
+    to each vertex <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>v</mi> <mo>&#x2208;<!-- ∈ --></mo> <mi>P</mi> <mi class="MJX-variant" mathvariant="normal">&#x2216;<!-- ∖ --></mi> <mtext>&#xA0;</mtext> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> </math>.
+</p>
+<p>
+    2. Eppstein, Loffler and Strash has shown that degeneracy ordering of the nodes in a graph greatly reduces the memory requirement for Tomita&#8217s algorithm
+for enumerating maximal cliques. Degeneracy <em>d </em>is the smallest number, such that all subgraphs of the graph contains vertices with degree &le; <em>d</em>. We use the method proposed by Matula and Beck to order the vertices by their degeneracy. Each vertex in a degeneracy ordering has at the most    <em>d </em>neighbors later than it in the ordering, where <em>d </em>is the degeneracy of the graph. This limits the size of <strong><em>P</em></strong>
+    within each recursive calls to be &le;  <em>d, </em>the degeneracy of the graph.
+</p>
+<p>
+    3. Heuristic optimizations to reduce search space: A size check is incorporated to ensure that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mi>P</mi> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>R</mi> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mo>&#x2265;<!-- ≥ --></mo> <mtext>&#xA0;</mtext> <mi>m</mi> <mi>i</mi> <mi>n</mi> <mo>.</mo> <mtext>&#xA0;</mtext> <mi>c</mi> <mi>l</mi> <mi>i</mi> <mi>q</mi> <mi>u</mi> <mi>e</mi> <mtext>&#xA0;</mtext> <mi>s</mi> <mi>i</mi> <mi>z</mi> <mi>e</mi> </math>. A heuristic is used to trim-edges off the All-vs-All
+    BLAST network based on e-value to reduce the size of the network to find the cliques. For each sequence, all edges with e-values &le; 1e-50 are retained.
+    If there are no hits with e-value &le; 1e-50, only the best hit is retained in the trimmed network.
+</p>              
+
+<h4>Downloads:</h4>
+<a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>
+</p>
+<p>
+<a href="Input.formats.html"> Check here for parameters of the program </a>
+</p>
+<p>
+<a href="Input.formats.html"> Look here for an example run </a>
+</p>
+<p>
+<a href="RandomWalkCluster.latex.pdf">Download the jar file here</a>
+</p>

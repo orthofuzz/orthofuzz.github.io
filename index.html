@@ -147,36 +147,7 @@ RNA-Seq data
                                                                    
                                                                    
                                                                    
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                                   
-                                                
-                                                                   
-<p><b>Overview:</b></p>
-
-
-
-<p>The Orthofuzz package positions contigs assembled de-novo from RNA-Seq short read data among protein sequences obtained from phylogenetic neighbors of the target organism in a muti-organism pairwise sequence similarity network. </p><p>A set of well annotated organisms in the phylogenetic neighborhood of the target organisms are handpicked and an All vs All BLAST carried out on translated contigs and amino-acid sequences to define an All vs All pairwise sequence similarity network with the sequences forming the nodes and the BLAST bit-score used to define the edge weight (higher the bit-score, higher the homology). </p>
-<p>The package includes a series of java programs which uses a combination of network topology and edge weights to annotate, analyze and summarize the RNA-Seq data.</p>
-
-
- <h3>Where does Orthofuzz fit into the RNA-Seq Bioinformatics Pipeline ?</h3>
-
-<a href="images/pipeline.png">
-    <p style="text-align:center"><img alt="Link not working" src="images/pipeline.png" width="600" height="500"/>
-</a>
-
-<p class="note">HTML code for the slider <a href="file:////Users/ajose/orthofuzz.github.io/wowslider.html">/Users/ajose/orthofuzz.github.io/wowslider.html</a></p>
-
-
+         
                                                                                                                
                                                                                                                
 <p><b>Key terms used in the descriptions:</b> </p>
@@ -188,10 +159,40 @@ RNA-Seq data
 <b>G</b>: The All-vs-All Pairwise Sequence Similarity Network.
 <b>Node</b>: A sequence in the pairwise-sequence similarity network.
 
+</p>                                                          
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+                                                                   
+ <p align="center"><b>                                               
+[CLICK ON TEXT IN <span style="color:#0000CC">BLUE</span> TO GET DETAILED DESCRIPTIONS AND DOWNLOAD LINKS)</b></p>                                                           
+<p><b>Overview:</b></p>
+
+
+
+<p>The Orthofuzz package positions contigs assembled de-novo from RNA-Seq short read data among protein sequences obtained from phylogenetic neighbors of the target organism in a muti-organism pairwise sequence similarity network. </p><p>A set of well annotated organisms in the phylogenetic neighborhood of the target organisms are handpicked and an All vs All BLAST carried out on translated contigs and amino-acid sequences to define an All vs All pairwise sequence similarity network with the sequences forming the nodes and the BLAST bit-score used to define the edge weight (higher the bit-score, higher the homology). </p>
+<p>The package includes a series of java programs which uses a combination of network topology and edge weights to annotate, analyze and summarize the RNA-Seq data.</p>
+
+
+ <p align="center">
+<h3>  Where does Orthofuzz fit into the RNA-Seq Bioinformatics Pipeline ?</h3>
 </p>
 
+<a href="pipeline.png">
+    <p style="text-align:center"><img alt="Link not working" src="pipeline.png" width="850" height="700"/>
+</a>
 
-<p><b>List of External Packages used: </b></p>
+
+
+
+
+<p><b>List of External Packages used: </b>
 <a href="http://jung.sourceforge.net"> JUNG </a><a href="https://github.com/rwl/ParallelColt"> Paralellcolt </a>
 <a href="http://trove.starlight-systems.com"> Trove </a>
 <a href="http://jblas.org"> Jblas </a>
@@ -208,17 +209,22 @@ RNA-Seq data
 
 <p><b> Programs in the package:</b> <br/> 
 (Click on names in <span style="color:#0000CC">BLUE</span> to get detailed descriptions and download links)</p>
-
-
-                                              
                                             
-<p><a href="RandomWalk.html"<b>RandomWalkwithRestart.jar </b></a><br/>
-<a href="transferannotations.html"<b>TransferAnnotations.jar </b></a><br/>
-<a href="TransferExpression.html"<b>TransferExpression.jar </b></a><br/>
-<a href = "PredictInteractions.html"<b>PredictInteractions.jar </b></a>
+<p><a href="RandomWalk.html"<b>1. RandomWalkwithRestart. </b> </a><br/>
+<a href = "MaximalCliques.html"<b>2. Finding Representative & Maximal Cliques in the Graph. </b></a> <br/>  
+<a href="transferannotations.html"<b>3. TransferAnnotations from Source Sequences to Target Target Sequences.</b></a><br/>
+<a href="TransferExpression.html"<b>4. TransferExpression from Target Contigs to Gene-Sets.</b></a><br/>
+<a href = "PredictInteractions.html"<b>5. Using known interactions in Source Organisms to Predict Interactions in the Target Organisms. </b></a><br/>
+<a href = "GeneSetStatistics.html"<b>6. Implements methods to estimate Gene-Set Statistics. </b></a><br/>
+<a href = "GeneListStatistics.html"<b>7.Implements methods to estimate Gene-List Statistics. </b></a><br/>
+<a href = "Coexpression.html"<b>8. Implements methods to estimate coexpression between genes/contigs/gene-sets and estimate statistical significance. </b></a><br/>
+                          
 </p>                  
-                              
+
+<p><b> Context for the programs :</b> <br/> 
+                                    
 <p>
+                                    
 Previous work has shown that functional ortholog proteins tends to share more neighbors with higher edge weight when compared to weak homologs
 in All-vs-All pairwise sequence similarity networks. Edge weigted random walk with restart is a memory efficient and fast computational method for capturing both shared topological neighborhood and high edge-weight in a [0-1] score, thereby making it a very useful tool for measuring orthology between sequences and/or sets of sequences.      
 </p>
@@ -230,7 +236,19 @@ in All-vs-All pairwise sequence similarity networks. Edge weigted random walk wi
                                                                                                                 
 <p>The max normalized <em>orthoscore</em> [0-1] returned for each member node of the cluster is a strong indicator of functional orthology. The RandomWalkwithRestart, therefore is a very powerful tool for [1] transferring functional informations we know about the query sets to the cluster members or for [2] summarizing information we know about the cluster-members to estimate summary statistics for the query-set.
 </p>
-                                                         
+
+<p>
+    Maximal Cliques:
+<a href="MaximalCliques.html"> Maximal Cliques: </a> Examination of the topological structure of the sequence similarity network has revealed that the ortholog gene families tend to form <a href= "http://mathworld.wolfram.com/Clique.html" Cliques </a>. Therefore, finding maximal/representative cliques in sequence similarity network is quite revealing in terms of identifying contig sequences that are strong members of gene families. 
+</p>
+
+<p>
+The <a href="MaximalCliques.html"<b>  </b>FindMaximalCliques </a> method list maximal and representative cliques in the network.
+</p>
+                   
+                                                                                                                
+                                                                                                                
+                                                                                                                
 <p><b>[1] Transferring information from query sets to cluster members: </b>
 The standard approach for assigning functional annotations to denovo assembled sequences is based on the observation that there is a high probability for cross organism orthologs to share biological function. Previous work has shown that true orthologs tend to share more neighbors with high edge weights in pairwise All-vs-All pairwise sequence similarity network. Since orthoscore captures this information, we can use the orthoscores for transferring functional annotations associated with the source sequences in the networks to the target sequences.</p>
 
@@ -243,170 +261,18 @@ If a gene X is known to interact with gene Y in one/many of the source organisms
 <p> Given mappings of gene-ids in the source organisms to enzymes, <a href="TransferExpression.html"<b>TransferExpression.jar </b></a> method will first use Randomwalkwithrestart.jar to find orthologs of the query sets in the new organisms, summarize the expression values in FPKM/TPM for each query and generate geneset statistics using the GeneSetStatistics.jar program described in the next section. </p>
                                                                                                             
 <p><b>[3] Tools to statistically analyze and summarize the results: </b></p>  
-                                                                                                    
-<p>[a] Given a list of L contigs, <b>GeneSetStatistics.jar</b> combines the p.values from differential expression analysis (reported by tools like DESeq2 and EdgeR) using the Fisher combined probability (FCP) method (Equation 1). The cumulative distribution function of the FCP value follows a Chi-Square distribution with 2L degrees of freedom. A chi-square test for the FCP statistic for 2L degrees of freedom gives the combined p-value for the contig-set.                                                     
-<h5></h5>
-<a href="images/FisherTransformation.png">
-    <img alt="Link not working" src="images/FisherTransformation.png"/> 
-</a>
-</p>
-                                                                                                    
-<p>There is also an option for estimating <b>permutation statistics</b> instead of the fisher transformation. We use the <a href="http://statweb.stanford.edu/~tibs/GSA/"<b>Gene Set Enrichment (GSA) </b></a> method proposed by Bradley Efron and Rob Tibshirani for the permutation test. The max. mean statistic is used as the test statistic. </p>
-<figure>                                                                     
-<a href="images/GSA-Max.Mean.Statistic.png">
-                                           <img alt="Link not working" src="images/GSA-Max.Mean.Statistic.png"/><figcaption> <b>Estimating the max. mean statistic for gene set testing:</b> <b>z</b> is the user-defined statistic that need to be tested. The default version uses mutual information or standard deviation of the expression data pooled across the conditions as the test statistic. But, the program can take the statistics of each contig as an input.</figcaption> 
-</a>                                                                     
-</figure>                                                                     
+<p><a href="GeneSetStatistics.html"> Gene-Set Statistics: </a> The program implements the Fisher combined probability (FCP) method and the <a href="http://statweb.stanford.edu/~tibs/GSA/"<b>Gene Set Enrichment (GSA) </b></a> permutation and randomization method proposed by Bradley Efron and Rob Tibshirani. The max. mean statistic is used as the test statistic.<p>                                                     
 
-<p>[b] Given a list of L contigs, <b>GeneListStatistics.jar</b> will report lists of functional annotation terms enriched in it. The EASE statistic, which is a modified version of Fisher Exact Test, is used to carry out gene list enrichment analysis. But, instead of using counts, the contig annotation graph generated by the <a href="transferannotations.html"<b>TransferAnnotations.jar </b></a> method is used for estimating the enrichment statistics. The edgeweigth of the Contig-Annotation graph is used instead of the counts in each categories.  </p>
-
-
-
-                                                                   
-<h5></h5>
-<a href="images/EASE_figure1.png">
-    <img alt="Link not working" src="images/EASE_figure1.png"/> 
-</a>
-                                                                   
-<h5></h5>
-<a href="images/EASE_figure2.png">
-    <img alt="Link not working" src="images/EASE_figure2.png"/> 
-</a>
-</p>
-<p>
-This has two advantages over regular gene list statistics. Firstly, this allows incorportation of quality of the annotation, number of sources with the annotation and the orthofuzz score, which captures the topological neighborhood of the contig in the sequence similarity network, to be incoporated into the scoring. Secondly, the method can candle all forms of annotations, irrespective of the type or source of annotation in the analysis. We incorporate, descriptions of terms, names of genes, gene ontology, protein domain terms, pathway names and types into the analysis. 
-</p> 
-
-                                                                   
-                                                                   
-<p>6. Better strength to this prediction can be obtained by finding interaction-units that are correlated with each other. <b>ParalellCoexpression.jar </b>Estimates pearson correlation of expression data using paralellColt java package. 
-<h5></h5>
-<figure>                                                             
-<a href="images/t.test.correlation.png">
-    <img alt="Link not working" src="images/t.test.correlation.png"/><figcaption> The correlation values are transformed to t-statistic which is then tested for significance with df = n-2</figcaption>
-</a>
-</figure>                                                            
-</p>
-
+<p><a href="GeneListStatistics.html"> Gene-List Statistics: </a> The program uses a weighted count derived from weighted annotations assigned to the target sequences by the TransferAnnotation method in the package. The <a href="https://david.ncifcrf.gov/helps/functional_annotation.html#fisher"> EASE score ( modified Fisher's Exact Test)  </a> is estimated and the statistical significance is reported.                                                 </p>
+      
+  <p><a href="Coexpression.html"> Coexpression: </a>A parallel implementation of coexpression from <a href="https://github.com/rwl/ParallelColt"> Paralellcolt </a> package is used for estimating Pearson's Correlation and the statistical significance for the scores are estimated by transforming the &rho; to t statistic.</p>                                                                                                 
                                                              
-<p>
-    Maximal Cliques:
-</p>
-<p>
-    The sequences in an All-vs-All pairwise sequence similarity network can be divided into (1) strong members of sequence clusters, (2) weak members of
-    multiple clusters and (3) singletons. Finding the maximal cliques in a sequence similarity graph can reveal the strong sequence clusters, which represents
-    the gene families conserved to different degrees across the organisms that are part of the network.
-</p>
-<p>
-    The cliques can then be used as queries to the RandomwalkwihRestart program to find the sequences in the network that are weak members. The combination of
-    the two methods thus allows for clustering of sequences in the network into clusters with each sequence assigned a fuzzy [0-1] strength of its membership
-    to the different clusters.
-</p>
-<p>
-    We have implemented the algorithm proposed by Eppstein, Loffler and Strash [ELS method] for listing all maximal cliques in a sparse graph (since sequence
-    similarity networks are sparse). Then a heuristic is used to filter the maximal cliques to retain just representative cliques. The representative cliques
-    are then used to query the network using RandomwalkwihRestart program to get fuzzy assignment of all the sequences in the network to 0, one or multiple
-    clusters with statistical significance of assignments estimated using permutation method.
-                                                                   
-</p>         
+
+ 
+                                <p><b>User-Manual Links:</b></p>
 
 
-<p>
-    Key steps in the implementation:
-</p>
-<p>
-    1. Bron Kerbosch Algorithm with Tomita&#8217s method for choosing pivots: The implementation of the BKBosch algorithm is shown here. We use the Tomita&#8217s
-strategy for choosing pivot vertices. The Tomita strategy is based on the observation that all maximal cliques must contain a non-neighbor of <strong><em>u</em></strong>, (where <strong><em>u</em></strong> itself is a non-neighbor). Therefore, given<em> <strong>P </strong></em>and    <strong><em>X</em></strong>, a pivot vertex <strong><em>v </em></strong>is chosen, which <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>&#x03F5;<!-- ϵ --></mi> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>X</mi> </math> and maximizes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mtext>&#xA0;</mtext> <mi>P</mi> <mtext>&#xA0;</mtext> <mo>&#x2229;<!-- ∩ --></mo> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> <mtext>&#xA0;</mtext> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> </math>. The recursive search space can now be limited
-    to each vertex <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mi>v</mi> <mo>&#x2208;<!-- ∈ --></mo> <mi>P</mi> <mi class="MJX-variant" mathvariant="normal">&#x2216;<!-- ∖ --></mi> <mtext>&#xA0;</mtext> <mi mathvariant="normal">&#x0393;<!-- Γ --></mi> <mo stretchy="false">(</mo> <mi>u</mi> <mo stretchy="false">)</mo> </math>.
-</p>
-<p>
-    2. Eppstein, Loffler and Strash has shown that degeneracy ordering of the nodes in a graph greatly reduces the memory requirement for Tomita&#8217s algorithm
-for enumerating maximal cliques. Degeneracy <em>d </em>is the smallest number, such that all subgraphs of the graph contains vertices with degree &le; <em>d</em>. We use the method proposed by Matula and Beck to order the vertices by their degeneracy. Each vertex in a degeneracy ordering has at the most    <em>d </em>neighbors later than it in the ordering, where <em>d </em>is the degeneracy of the graph. This limits the size of <strong><em>P</em></strong>
-    within each recursive calls to be &le;  <em>d, </em>the degeneracy of the graph.
-</p>
-<p>
-    3. Heuristic optimizations to reduce search space: A size check is incorporated to ensure that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mi>P</mi> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>R</mi> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mo>&#x2265;<!-- ≥ --></mo> <mtext>&#xA0;</mtext> <mi>m</mi> <mi>i</mi> <mi>n</mi> <mo>.</mo> <mtext>&#xA0;</mtext> <mi>c</mi> <mi>l</mi> <mi>i</mi> <mi>q</mi> <mi>u</mi> <mi>e</mi> <mtext>&#xA0;</mtext> <mi>s</mi> <mi>i</mi> <mi>z</mi> <mi>e</mi> </math>. A heuristic is used to trim-edges off the All-vs-All
-    BLAST network based on e-value to reduce the size of the network to find the cliques. For each sequence, all edges with e-values &le; 1e-50 are retained.
-    If there are no hits with e-value &le; 1e-50, only the best hit is retained in the trimmed network.
-</p>                                 
-                                                                
-                                                                
-                                                                   
-<b>7. FindRepresentativeCliques.jar </b>finds clusters in the network, first by finding representative cliques in the network and then running NetworkFlow.jar to find weak members of the clusters.
-<h4> The program parameters </h4>
-<p><a href="network.flow.html"> Click here to see how to use the programs</a><p>
-
-                              
-<p>The <b>GeneSetEnrichmentStats.jar</b> will generate gene-set statistics using Fisher’s method for combining p-values from gene-sets.</p>
-FisherTransformation.png
-
-<p>Overview of the workflow:</p>
-
-<p>1. Preparing the input files </p>
-
-<p> The different input files needed for the programs have to be in <tab> delimited text files in specified formats.</p>
-
-<p><a href="Input.formats.html"> The input file formats are detailed here. </a><p>
-
-<p>2. Run NetworkFlow program to estimate the strength of homology between the source and target sequences.</p>
-
-<p>3. Run the TransferExpression program to estimate the representative expression levels for query gene sets from the complied pathways.</p>
-
-<p>4. Run the TransferAnnotations program to transfer the annotations from the source sequences to the target sequences.</p>
-
-<p>5. Run the TransferInteractions program to estimate evidence for the presence and strength of protein interactions of the source organisms in the target organisms.</p>
-
-<p>6. Run Coexpression program on the expression of the interaction data to identify interaction units that are co-expressed.</p>
-
-<p>10. Run NetworkAND program to identify protein complexes that are interacting and are co-expressed in the target organisms.</p>
-
-<p>11. Run Coexpression program on the pathway expressions to identify enzymes and pathways that are co-expressed.</p>
-
-
-<p><a href="networkflow.html"> Input formats </a><p>
-
-<p>
-<br>
-<br>
-<br>
-<br>
-<br>
-</p>
-
-
-<p>Key concepts [Manuscript under preparation]:</p>
-
-<p>1. The fragmented nature and the high identity between sub-groups of the contigs make the current approach of assignment of contigs to the best hits in the source organisms [Table X] error-prone [Figure X]. </p>
-
-<p>2. Protein sequences from the same gene family share more neighbors with higher edge weights compared to those that just share functional domains [Figure X].</p>
-
-<p>3. Random walking with restart on an edge-weighted network captures high edge weights and topological neighborhood to give probabilistic definition of network neighborhood [Figure X].</p>
-
-<p>There are five algorithms at the core of the package [Refer Manuscript]:</p>
-
-<p>1. Random walk with restart on an edge weighted network starting from a set of start nodes.</p>
-
-<p>2. Estimate summary expression value of the topological neighbors of a set of nodes.</p>
-
-<p>3. Transfer functional annotations from source organisms to target organisms.</p>
-
-<p>4. Transfer interactions from source organisms to the target organisms.</p>
-
-<p>5. Modified Tomita Algorithm to identify representative cliques in sequence similarity networks.</p>
-
-
-<p> Statistics </p>
-
-<p>1. Edge Weighted Random Walk with restart using perambulation statistics</p>
-
-<p>2. Permutation Statistics using max mean statistic</p>
-
-<p>3. EASE Score for gene list </p>
-
-<p>4. Fishers Gene Set Stat</p>
-
-<p>5. Max mean stat for Gene Set Analysis</p>
-
+<p><a href="networkflow.html"> CLICK HERE </a> for the user-manual of the programs<p>                                           <p><a href="Input.formats.html"> The input file formats are detailed here. </a><p>                                                                                 
 
 <p>The software was developed in JAVA on GNU/Linux operating system with support for multithreading. It is free for noncommercial use.</p>
 

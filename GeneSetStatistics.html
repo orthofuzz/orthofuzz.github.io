@@ -1,0 +1,31 @@
+<p>
+    <em><h3>Gene Set Statistics:</h3></em>
+</p>
+<p>
+    <em> </em>
+</p>
+<p>[a] Given a list of L contigs, <b>GeneSetStatistics.jar</b> combines the p.values from differential expression analysis (reported by tools like DESeq2 and EdgeR) using the Fisher combined probability (FCP) method (Equation 1). The cumulative distribution function of the FCP value follows a Chi-Square distribution with 2L degrees of freedom. A chi-square test for the FCP statistic for 2L degrees of freedom gives the combined p-value for the contig-set.                                                     
+<h5></h5>
+<a href="images/FisherTransformation.png">
+    <img alt="Link not working" src="images/FisherTransformation.png"/> 
+</a>
+</p>
+                                                                                                    
+<p>There is also an option for estimating <b>permutation statistics</b> instead of the fisher transformation. We use the <a href="http://statweb.stanford.edu/~tibs/GSA/"<b>Gene Set Enrichment (GSA) </b></a> method proposed by Bradley Efron and Rob Tibshirani for the permutation test. The max. mean statistic is used as the test statistic. </p>
+<figure>                                                                     
+<a href="images/GSA-Max.Mean.Statistic.png"><img alt="Link not working" src="images/GSA-Max.Mean.Statistic.png"/></a><figcaption> <b>Estimating the max. mean statistic for gene set testing:</b> <b>z</b> is the user-defined statistic that need to be tested. The default version uses mutual information or standard deviation of the expression data pooled across the conditions as the test statistic. But, the program can take the statistics of each contig as an input.</figcaption> 
+                                                                     
+</figure>                                                                     
+
+<h4>Downloads:</h4>
+<a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>
+</p>
+<p>
+<a href="Input.formats.html"> Check here for parameters of the program </a>
+</p>
+<p>
+<a href="Input.formats.html"> Look here for an example run </a>
+</p>
+<p>
+<a href="RandomWalkCluster.latex.pdf">Download the jar file here</a>
+</p>
