@@ -1,0 +1,151 @@
+<FONT FACE="garamond" size=4>
+<p>
+    <em><h3>File Formats:</h3></em>
+</p>
+<p>
+    <em> </em>
+</p>
+<p>
+<p>a. Pairwise sequence similarity network.</p>
+
+<p>The de-novo assembled contig sequences should be translated and BLASTed against the protein sequences from the source organisms. Each sequences form the nodes of the network and the bit-score from BLAST forms the edge weight. BLOSUM62 is used as the transition matrix. We use mpiblast for faster runtimes (See Scripts file for example runs). The BLAST results are parsed to get network files in the format:</p>
+
+<p>Sequence1<tab>Sequence2<tab>BitScore<tab>e-value. All hits with e-value < cut-off are retained by default. The user can set this parameter.</p>
+
+<p>AT1G01010.1 AT1G02230.1 143 1e-33</p>
+
+<p>AT1G01010.1 AT1G02250.1 139 2e-32</p>
+
+<p>AT1G01010.1 AT1G33060.1 107 6e-23</p>
+
+<p>AT1G01010.1 AT1G33060.2 107 6e-23</p>
+
+<p>AT1G01010.1 AT3G04420.1 115 4e-25</p>
+
+<p>AT1G01010.1 AT3G04420.2 108 3e-23</p>
+
+<p>AT1G01010.1 AT3G10480.1 102 3e-21</p>
+
+<p>AT1G01010.1 AT3G10480.2 101 5e-21</p>
+
+<p>AT1G01010.1 AT3G10490.1 103 1e-21</p>
+
+<p>AT1G01010.1 AT3G49530.1 108 3e-23</p>
+
+<p>b. The source annotation network should be of the following format.</p>
+
+<p>Annotation<tab>Annotation Type<tab>Annotation Source<tab> Annotation Weight</p>
+
+<p>1,2-alpha-L-fucosidases Names AT4G34260.1 Tair 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g183700.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g185000.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g185350.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre03.g198200.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre04.g214650.t1.1 Chlamy 1.0</p>
+
+<p>1,3-beta-D-glucan synthase Names Cre06.g302050.t1.2 Chlamy 1.0</p>
+
+<p>1-amino-cyclopropane-1-carboxylate synthase 12 Names AT5G51690.1 Tair 1.0</p>
+
+<p>1-amino-cyclopropane-1-carboxylate synthase 2 Names AT1G01480.1 Tair 1.0</p>
+
+<p>CreateAnnotationGraph.jar DirectorywithSourceAnnotations</p>
+
+<p>can be used to convert tab formulated source annotation data to the source annotation graph format shown in section 1.b</p>
+
+<p>AT1G01010.1 PF02365</p>
+
+<p>AT1G01020.1 PF04161</p>
+
+<p>AT1G01020.2 PF04161</p>
+
+<p>AT1G01030.1 PF02362</p>
+
+<p>AT1G01040.1 PF03368</p>
+
+<p>AT1G01040.1 PF00271</p>
+
+<p>AT1G01040.1 PF00636</p>
+
+<p>AT1G01040.1 PF02170</p>
+
+<p>AT1G01040.1 PF00035</p>
+
+<p>AT1G01040.1 PF04851</p>
+
+<p>c. Pathway Query File:</p>
+
+<p>Pathway<tab>Protein_Family_Name<tab>Protein_Family_Abbreviation<tab>EC_number<tab>Queries</p>
+
+<p>Example Rows:</p>
+
+<p>Acetate_Assimilation Acyl-CoA_synthetase ACS1 6.2.1.1 AT5G36880.1,AT5G36880.2,Cre07.g353450.t1.2,Cre01.g055408.t1.1,Cre01.g071662.t1.1</p>
+
+<p>Aminoacid_metabolism Alanine_aminotransferase ALT 2.6.1.2 AT1G17290.1,AT1G23310.1,AT1G23310.2,AT1G70580.1,AT1G70580.2,AT1G70580.3,AT1G70580.4,AT1G72330.1,AT1G72330.2,AT1G72330.3,Cre06.g284700.t1.2,Cre10.g451950.t1.2</p>
+
+<p>Aminoacid_metabolism Alanine-glyoxylate_aminotransferase,_Alanine-glyoxylate_transaminase_1_(AGT1) AGT1 2.6.1.44,2.6.1.45,2.6.1.51 AT2G13360.1,AT2G13360.2,Cre01.g005150.t1.1,Cre06.g294650.t1.2</p>
+
+<p>Notes: Columns without data should have &acirc;&euro;&#339;-- &acirc;&euro;&#339; in it.</p>
+
+<p>For Example:</p>
+
+<p>CCM ABC-type transporter HLA3/MRP1 -- Cre02.g097800.t1.3,AT2G07680.1</p>
+
+<p> d. Sequency Query Set:</p>
+
+<p>numberid<tab>><tab>geneID1,geneID2 example 1 > AT1G01010.1,AT1G01020.1 2 > AT1G01020.1,AT1G01020.2</p>
+
+<p>e. FunctionFlowGraph.txt - the standard output of the RandomwalkwithRestart program.</p>
+
+<p>Source Target orthoscore Norm.orthoscore species.norm.orthoscore AT1G12410.1 Emihu1_363248 0.019 0.713 0.744 AT1G12410.1 Emihu1_46366 0.022 0.814 0.85 AT1G12410.1 Cre16.g682900.t1.2 0.026 0.974 0.999 AT1G12410.1 Cre12.g521450.t1.1 0.022 0.842 0.864 AT1G12410.1 Emihu1_368559 0.021 0.795 0.83 AT1G12410.1 ATCG00670.1 0.023 0.856 0.882 AT1G12410.1 Emihu1_433678 0.023 0.851 0.888</p>
+
+<p> f. Contig.Annotation.Graph.txt</p>
+
+<p>Target_Sequence Organism Annotation Annotationtype Score comp36351_c0_seq1 Br KOG0254 KOG 5.0 comp36351_c0_seq1 Br GO:0043090 GO 1.0 comp36351_c0_seq1 Br GO:0031348 GO 1.0 comp36351_c0_seq1 Br GO:0090406 GO 1.0 comp36351_c0_seq1 Br GO:0015168 GO 1.0 comp36351_c0_seq1 Br GO:0015575 GO 1.0 comp36351_c0_seq1 Br polyol/monosaccharide transporter 1 Names 1.0 comp36351_c0_seq1 Br GO:0015144 GO 4.0 comp36351_c0_seq1 Br GO:0015145 GO 1.0 comp36351_c0_seq1 Br GO:0015749 GO 1.0</p>
+
+<p></p>
+
+<p> g. Contig.Annotation.files</p>
+
+<p>2. Contig_Annotations.<blastcutoff>.<orthofuzz.cutoff>.summary.txt :  Listing ALL the annotations associated with the contigs in a text file.</p>
+
+<p>Example:</p>
+
+<p>ID: comp10342_c0_seq5 Top-Names: Ribosomal protein S5/Elongation factor G/III/V family protein 1.0 3.0 Top 10 key-words in annotation descriptions: (12.0),factor(10.0),cellular_component(9.0),molecular_function(5.0),AN(4.0),domain(3.0),GTP(2.0),protein(2.0),Peptide-release(2.0),Tu(2.0), Annotations Summary: Top EC-IDs: EC 3.6.5.3 1.0 3.0</p>
+
+<p> DE Protein-synthesizing GTPase.  AN Elongation factor (EF).  AN Initiation factor (IF).  AN Peptide-release factor (RF).  AN Peptide-release or termination factor.  CA GTP + H(2)O = GDP + phosphate.  // Ranked Annotations:</p>
+
+<p>GO GO:0005525 GTP binding molecular function 1.0 3.0 Panther PTHR23115:SF4 1.0 3.0 Panther PTHR23115 translation factor 1.0 3.0 GO GO:0005737 cytoplasm cellular component 1.0 3.0 Pfam PF03144 GTP_EFTU_D2:Elongation factor Tu domain 2 1.0 3.0 GO GO:0003924 GTPase activity molecular function 1.0 3.0 Pfam PF03764 EFG_IV:Elongation factor G, domain IV 1.0 3.0 KOG KOG0469 Elongation factor 2 1.0 3.0 Pfam PF00009 GTP_EFTU:Elongation factor Tu GTP binding domain 1.0 3.0 Pfam PF00679 EFG_C:Elongation factor G C-terminus 1.0 3.0 Neighbors: Tair: AT3G12915.2,AT3G12915.1,AT1G56070.1 Zea: AC203173.3_FGT004,GRMZM2G040369_T02,GRMZM2G040369_T01,GRMZM2G113250_T01,GRMZM2G095851_T02,GRMZM2G095851_T01</p>
+
+<p> h. Contig_Annotations.<blastcutoff>..<orthofuzz.cutoff>.<annotation.cutoff>.summary.txt</p>
+
+<p>Terms in each tab:</p>
+
+<p>ID - Id of contig</p>
+
+<p>All annotations have a annotation score: Description - Description with highest score: ClosestSourceGenes(evalue)  EC-ID Expression cond.1 Expression cond.2 Expression cond.3 . . . Transdecode-Annotations - Transfered from Input pathways GO Pfam Panther KOG</p>
+
+<p> Example: ID Description ClosestSourceGenes(evalue) EC-ID Freq.2 Freq.3 Freq.4 Freq.5 Freq.6 Freq.7 Freq.8 Freq.9 Freq.10Freq.11 Freq.12 Transdecode-Annotations pathways GO Pfam Panther KOG comp36351_c0_seq1 Major facilitator superfamily protein(2.0); Emihu1_209149(3.0E-23) -- 5.3.1.4(2.0); 36.81 24.20 66.55 78.79 0.00 42.87 56.27 28.32 55.85 28.48 40.85 0.00 17.04 28.81 42.47 22.29 32.91 88.37 32.54 46.59 110.09 76.17 41.64 58.65 0.00 45.78 11.29 25.48 37.51 50.67 74.96 101.05 112.88 42.18 59.34 54.90 66.05 31.51 42.03 28.53 38.37 0.00 10.24 32.64 0.00 45.34 68.43 -- -- GO:0055085(4.0); GO:0022891(4.0); GO:0005886(4.0); GO:0015144(4.0); GO:0005351(6.0); GO:0016021(6.0); GO:0022857(4.0); GO:0016020(6.0); GO:0008643(2.0); GO:0006810(6.0); GO:0005215(6.0); GO:0008733(2.0); PF00083(5.0); PTHR24063:SF85(4.0); PTHR24063(4.0); KOG0254(5.0); </p>
+
+<p> i. ExpressionData:</p>
+
+<p>GeneID<tab>Expression1<tab>Expression2<tab>............</p>
+
+<p>Example: transcript_id A2_L1 A2_L2 A4_L1 A4_L2 A6_L1 A6_L2 A9_L1 A9_L2 A10D_L1 A10D_L2 A10L_L1 A10L_L2 A11D_L1 A11D_L2 A11L_L1A11L_L2 B2_L1 B2_L2 B4_L1 B4_L2 B6_L1 B6_L2 B9_L1 B9_L2 B10D_L1 B10D_L2 B10L_L1 B10L_L2 B11D_L1 B11D_L2 B11L_L1 B11L_L2C2_L1 C2_L2 C4_L1 C4_L2 C6_L1 C6_L2 C9_L1 C9_L2 C10D_L1 C10D_L2 C10L_L1 C10L_L2 C11D_L1 C11D_L2 C11L_L1 C11L_L2 Emihu1_100000 10.53 9.13 2.4 2.76 25.41 26.72 34.47 44.21 31.16 36.3 26.66 26.28 46.54 46.49 31.15 22.66 12.43 9.75 2.36 0.33 28.02 21.4 32.05 32.74 37.64 42.71 29.81 24.45 48.41 39.02 33.66 32.31 8.39 16.07 3.29 1.46 19.7 20.72 33.03 31.37 45.18 39.37 31.01 30.39 50.61 49.51 34.53 33.64  Emihu1_100004 40.93 39.06 13.05 14.02 53.83 56.43 66.14 68.75 47.38 48.44 50.64 46.64 42.68 47.33 53.46 54.61 44.81 41.35 11.52 9.19 59.86 54.58 72.36 70.21 53.31 52.46 63.3 48.07 44.95 42.03 57.47 55.91 49.57 54.74 14.66 14.5 58.81 55.01 68.53 72.78 46.92 43.82 65.43 71.74 50.57 47.4 63.33 57.53  Emihu1_100011 13.15 11.26 1.68 2.2 20.51 25.09 24.91 26.78 19.21 20.25 8.46 12.48 24.83 27.81 18.02 17.71 11.63 18.27 1.19 1.4 28.2 28.34 26.59 30.05 34.08 30.58 25.38 23.6 26.84 31.69 21.1 23.36 20.25 17.21 0.78 2.88 30.71 33.82 33.51 28.44 29.97 26.53 28.47 31.12 24.42 21.56 20.13 17.38 </p>
+
+<p> j. Enzyme Expression File:</p>
+
+<p>Pathway_Name Enzyme_ID Symbol EC_ID QuerySequences Neighbors(Orthofuzz Score) Tab.Delimited.ExpressionData GeneSetMeasure GeneSetStatistics</p>
+
+<p>Example</p>
+
+<p>Pathway_Name Enzyme_ID Symbol EC_ID QuerySequences Neighbors(Orthofuzz Score) A10D_L1 A10D_L2 A10L_L1 A10L_L2 A11D_L1 A11D_L2 A11L_L1 A11L_L2 A2_L1 A2_L2 A4_L1 A4_L2 A6_L1 A6_L2 A9_L1 A9_L2 B10D_L1 B10D_L2 B10L_L1 B10L_L2 B11D_L1 B11D_L2 B11L_L1 B11L_L2 B2_L1 B2_L2 B4_L1 B4_L2 B6_L1 B6_L2 B9_L1 B9_L2 C10D_L1 C10D_L2 C10L_L1 C10L_L2 C11D_L1 C11D_L2 C11L_L1 C11L_L2 C2_L1 C2_L2 C4_L1 C4_L2 C6_L1 C6_L2 C9_L1 C9_L2 GeneSetMeasure GeneSetStatistics Acetate_Assimilation Acyl-CoA_synthetase ACS1 6.2.1.1 AT5G36880.2;AT5G36880.1;Cre07.g353450.t1.2;Cre01.g055408.t1.1;Cre01.g071662.t1.1; comp29679_c0_seq2[0.838,0.838,0.001];Emihu1_465551[0.815,0.815,0.001];Emihu1_451133[1,1,0];Emihu1_64778[0.975,0.975,0]; 171.784 174.457 170.643 186.029 161.742 120.026 201.972 193.528 65.731 61.939 28.481 24.184 130.432 140.808 181.941 187.478 177.183 184.775 182.561 191.366 160.596 155.277 206.676 197.372 59.061 60.112 25.7 23.888 126.02 130.663 200.62 193.044 174.98 163.389 189.406 193.928 152.565 145.301 200.82 209.367 79.044 75.302 31.18 30.364 104.304 106.628 188.678 185.163 5.578 0 Aminoacid_metabolism Alanine_aminotransferase ALT 2.6.1.2 AT1G72330.3;AT1G72330.1;AT1G72330.2;AT1G23310.2;AT1G23310.1;AT1G70580.4;AT1G70580.3;AT1G70580.2;AT1G70580.1;AT1G17290.1;Cre10.g451950.t1.2;Cre06.g284700.t1.2; Emihu1_447795[0.986,1,0];Emihu1_417644[0.9 75,0.99,0];comp15863_c0_seq1[0.925,0.939,0]; 94.227 92.999 96.699 88.622 88.369 86.033 94.299 112.974 33.09 33.342 48.757 18.803 66.374 80.751 126.524 122.047 96.165 92.501 108.922 109.142 99.767 99.141 106.167 113.58 52.764 36.441 18.754 18.902 100.981 72.033 106.845 128.468 112.231 92.976 111.562 106.759 114.521 90.638 113.588 102.298 42.403 66.871 17.102 17.373 64.615 58.587 118.125 124.151 5.082 0.073</p>
+
+<p> k: Pathway Statistics File:</p>
+
+<p>Pathway name GeneSetStatistics p-Value Prokaryotic_Galactolipid,_Sulfolipid,_&amp;_Phospholipid_Synthesis_2 4.251 0.664 Suberin_Synthesis_&amp;_Transport_3 5.476 0 Prokaryotic_Galactolipid,_Sulfolipid,_&amp;_Phospholipid_Synthesis_1 5.035 0.02 Suberin_Synthesis_&amp;_Transport_1 5.298 0.008 Glyoxylate_Metabolism 4.642 0.121 Lipid_Trafficking 5.307 0.008 </p>

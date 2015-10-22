@@ -1,0 +1,139 @@
+RandomWalkwithRestart.jar: Runs random walk with restart from a set of query sequences and estimates probability to end the walk in K = step neighbors of the queries in pairwise-sequence similarity network.
+
+Program parameters:
+#input files
+Qmap  = the query map file in the required format
+
+BlastNet = Blast Results in the required format
+
+# RWR parameters
+
+threshold_cutoff = cut-off L1 norm (default = 0.0001)
+
+loop_cutoff = maximum number of loops (default = 50)
+
+step_size = max number of random walk steps (default = 2)
+
+replicates = replicates for permutation test (default = 50)
+
+#output parameters
+
+pop_filename = filename for reporting permutation stats
+
+Flow_filename = file name of Flow Statistics
+
+Usage:
+java -jar NetworkFlow.jar BlastNet QueryMaps threshold_cutoff loop_cutoff step_size replicates output_population output_flowstats.
+
+Example run:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar NetworkFlow.jar files/BlastResults/1e-20/AllvsAll.1e-20.abcd files/StringDB/tair/Tair.withinteractiondata.list 0.0001 25 2 50 files/Results/Interactions/Population.1e-20.txt files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt
+
+#####################################################################################################################################
+
+TransferExpressions.jar: Summarizes expression level and generates gene-set statistics for Query Gene-Sets.
+
+Program parameters:
+
+#input files
+
+Qmap = the query map file in the required format
+
+Expr1,Expr2 = comma seperated expression files in the required format
+
+BlastNet = Blast Results in the required format
+
+# RWR parameters
+
+threshold_cutoff = cut-off L1 norm (default = 0.0001)
+
+loop_cutoff = maximum number of loops (default = 50)
+
+step_size = max number of random walk steps (default = 2)
+
+replicates = replicates for permutation test (default = 50)
+
+#output parameters
+
+outputfilename = filename starts with this
+
+max.norm cutoff = cut_off_max.normalized score OR
+
+pvalue cut_off = report all homologs with orthofuzz p-value < pvalue cutoff
+
+Usage:
+
+java -jar TranferExpression.jar Qmap Expr1,Expr2 BlastNet threshold_cutoff loop_cutoff step_size replicates outputfilename max.norm_cutoff/p.value_cutoff
+
+Example run:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar TranferExpression.jar files/SourceAnnotations/Biocyc/maps/aracyc.chlamycyc.map files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt,files/ExpressionSummary/Expression_Big/Expression.unmapped.formatted.FPKM files/BlastResults/Networks/AllvsAll.1e-20.abcd 0.0001 50 2 50 files/Results/Pathways/Biocyc/Pathway_Expressions_biocyc_ Ehux 0.80
+
+#####################################################################################################################################
+
+TransferAnnotations.jar: Summarizes expression level and generates gene-set statistics for Query Gene-Sets.
+
+Program parameters:
+
+#input files
+
+Qmap = the query map file in the required format
+
+Expr1,Expr2 = comma seperated expression files in the required format
+
+BlastNet = Blast Results in the required format
+
+# RWR parameters
+
+threshold_cutoff = cut-off L1 norm (default = 0.0001)
+
+loop_cutoff = maximum number of loops (default = 50)
+
+step_size = max number of random walk steps (default = 2)
+
+replicates = replicates for permutation test (default = 50)
+
+#output parameters
+
+outputfilename = filename starts with this
+
+max.norm cutoff = cut_off_max.normalized score OR
+
+pvalue cut_off = report all homologs with orthofuzz p-value < pvalue cutoff
+
+Usage:
+
+java -jar TranferExpression.jar Qmap Expr1,Expr2 BlastNet threshold_cutoff loop_cutoff step_size replicates outputfilename max.norm_cutoff/p.value_cutoff
+
+Example run:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx240G -XX:ParallelGCThreads=2 -jar TransferAnnotations_Braunii.jar files/SourceAnnotations/AnnotationsGraph.txt files/Results/Annotations/Fflowwithstats.1e-20.wrst.filtered.0.7.txt files/OtherData/Expression/Expression.TMM.formatted_for.orthofuzz.txt files/BlastResults/Networks/1e-20/AllvsAll.1e-20.abcd_Best_Hits.map U572 files/Results/Annotations/Contig_Annotations.1e-20.0.7.txt files/Results/Annotations/Contig_AnnotationGraph.1e-20.0.7.txt files/Results/Annotations/Contig_Annotations.1e-20.0.7.summary.txt
+
+#####################################################################################################################################
+
+Predicting Interaction Units:
+
+First run NetworkFlow from interaction units to get function flow stats.
+
+Program parameters:
+
+java -jar PredictIntreactionsparalell.jar StringDB.interaction.links.abc string_cutoff Fflowwithstats.1e-20.wrst.txt flow_cutoff prediction_cutoff outputname Expression_FPKM.formatted.txt Source_Names.map
+
+java -jar cluster_one-0.92.jar -F genepro Interactions.clusterone.in.txt > Interactions.clusterone.out.txt;
+
+java -jar ParallelColtCorrelation.jar IU_Expression.txt expression_cutoff Ouput_File
+
+java -jar NetworkAND.jar Graph1 g1cutoff g2cutoff Graph2 Output_file
+
+java -jar cluster_one-0.92.jar -F genepro Interactions_Intersection_AND_Coexpression.txt > Interactions_Intersection_AND_Coexpression.clusterone.out.txt;
+
+Example usage:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar PredictIntreactionsparalell.jar files/StringDB/tair/Tair.interaction.stringdb.links.filtered.abc 0.7 files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt 0.70 0.50 files/Results/Interactions/PredictedInteractions.test files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt files/SourceAnnotations/Names/Tair_Names.map
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar /work/bbmb_1/ajose/cluster_one/cluster_one-0.92.jar -F genepro Interactions.clusterone.in.txt > Interactions.clusterone.out.txt;
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar ParallelColtCorrelation.jar files/Results/Interactions/IU_Expression.FPKM.formatted.txt 5.0 files/Results/Interactions/IU_Coexpression.formatted.txt
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar NetworkAND.jar files/Results/Interactions/PredictedInteractions.formatted.list 0.5 files/Results/Interactions/IU_Coexpression.formatted.txt 0.5 0.5 files/Results/Interactions/Interactions_Intersection_AND_Coexpression.txt
+

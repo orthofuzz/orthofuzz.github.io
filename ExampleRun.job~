@@ -1,0 +1,450 @@
+Here we can look at the applications used in analyzing the data from the Ehux experiment:
+
+##################################################################################################################################
+DATA PREPERATION
+##################################################################################################################################
+
+1. Sequence Data: 
+
+Reference Sequences:
+
+a) The filtered sets of gene models were downloaded from joint genome institute [1] and clustered using CD-HIT-EST software[2]. All gene models with greater than 99% identity are clustered together sand represented with one representative sequence. 30340 gene models were retained after clustering.
+
+b) The short read sequences were mapped to the clustered gene-models. 
+
+c) The unmapped reads from all the samples were pooled together and assembled using denovo assembly software - Trinity. Trinity produced 32160 contigs.
+
+2. Source Annotations
+
+2.1 Pathway Mappings:
+
+The pathways associated with the arabidopsis and chlamydomonas gene-models were curated from different sources and parsed
+to the following format.
+
+Header and Example Row
+pathway	Protein_Family_Name	Protein_Family_Abbreviation	EC_number	Members	
+Acetate_Assimilation	Acyl-CoA_synthetase	ACS1	6.2.1.1	AT5G36880.1,AT5G36880.2
+
+(1) Aralip:
+
+(a) Mappings:
+Lipid Metabolism related Genes and pathway assignments were extracted from http://aralip.plantbiology.msu.edu/data/aralip_data.xlsx
+Genes related to basic carbon metabolism were curated manually. The chlamydomonas genes were also curated manually using the annotations from phytozome and literature.
+
+All the aralip mappings are included in the Tair_Chlamy_Maps.txt which has 531 mappings.
+
+(2) Biocyc:
+
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted to match the
+format shown here.
+
+(a) Mappings:
+There are 3176 mappings in the aracyc.chlamycyc.map
+
+(b) Pathway Mappings:
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted as gene<tab>pathway format here.
+
+There are 5861 arabidopsis thaliana genes and 2351 chlamydomonas reinhardtii genes associated with the pathways.
+
+2.2 Functional Annotations
+
+We decided to use functional annotations from five source organisms for the study.
+
+1. Arabidopsis thaliana
+2. Chlamydomonas reinhardtii
+3. Phaeodactylum tricornutum
+4. Thalassiosira pseudonana
+5. Emiliania huxleyi
+4. Protein sequences associated with the mitochondrial and chloroplasts of Emiliania huxleyi which are not included in the jgi gene model set were downloaded from NCBI and added to the set of source sequences.
+
+The latest protein sequences obtained from translations of their gene-models were compiled and the functional annotations assigned to these sequences were compiled
+from http://phytozome.jgi.doe.gov/pz/portal.html# 
+
+Protein Sequence Data (Number of sequences) were downloaded from http://phytozome.jgi.doe.gov/pz/portal.html hosted by the 
+joint genome institute:
+
+Version	(Number of Sequences - Both cDNA/Gene models and amino acid sequences)
+Athaliana 167 TAIR10.protein.forblast.fa	(35386)
+Creinhardtii 281 v5.5.protein.fa	(19526)
+Emihu1 best proteins.fasta	(39125)
+Emihu1 Chloroplast.proteins.fa	(284)
+Emihu1 Mitochondria.proteins.fa	(61)
+Phatr2 filtered.forblast.fa	(10025)
+Thaps3.proteins.all.fa	(11776)
+Trinity Ehux Unmapped.fasta	(32160)
+
+The functional annotations were downloaded and parsed out from:
+
+Athaliana_167_TAIR10.annotation_info.txt
+Creinhardtii_281_v5.5.annotation_info.txt
+http://genome.jgi-psf.org/Emihu1/Emihu1.download.ftp.html
+http://genome.jgi-psf.org/Phatr2/Phatr2.download.ftp.html
+http://genome.jgi-psf.org/Thaps3/Thaps3.home.html
+
+
+The annotations were grouped into different folders based on the type of the annotations. The annotations are in tab delimited format
+Example rows
+
+SourceID<tab>Annotation
+AT1G01046	GO:0003674
+
+
+./CrossMappings:
+
+Cross Mappings between different Annotations
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+source
+Tair_Loci_ID.map
+
+./ECMappings:
+Chlamy_EC.map
+Ehux_EC.map
+Phatr2_EC.map
+Tair_EC.map
+Thaps3_EC.map
+
+./GOMappings:
+Chlamy_GO.map
+Ehux_GO.map
+Phatr2_GO.map
+Tair_GO.map
+
+./IPRMappings:
+Phatr2_IPR.map
+Thaps3_IPR.map
+
+./KOGMappings:
+Chlamy_KOG.map
+Ehux_KOG.map
+Phatr2_KOG.map
+Tair_KOG.map
+Thaps3_KOG.map
+
+./Names:
+Tair_KOG_Chlamy_Names.map
+
+
+./PANTHERMappings:
+Chlamy_Panther.map
+Tair_Panther.map
+
+./PfamMappings:
+Chlamy_Pfam.map
+Phatr2_Pfam.map
+Tair_Pfam.map
+Thaps3_Pfam.map
+
+
+./ECMappings
+
+
+./Descriptions:
+
+The descriptions associated with different functional annotation terms of data were obtained from:
+http://eggnog.embl.de/version_3.0/downloads.html
+http://eggnog.embl.de/version_3.0/data/downloads/all.description.tar.gz
+ftp://ftp.ebi.ac.uk/pub/databases/interpro/Current/ParentChildTreeFile.txt
+
+
+The descriptions were formatted into the required tab delimited format to get the
+following files.
+
+EC_Descriptions.txt
+GO_Descriptions.txt
+IPR_Names.txt
+KOG.description.txt
+OrthologGroup_Descriptions.map
+Panther10.0_classifications.txt
+Pfam.names.formatted.txt
+
+
+./CrossMappings:
+
+The cross term mappings were obtained from geneontology.org/external2go/
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+Tair_Loci_ID.map
+
+##################################################################################################################################
+3. INTERACTION DATA
+##################################################################################################################################
+
+StringDB Interaction Data (http://string-db.org/)
+
+STRING database has a collection of known and predicted protein interaction data. The interactions can be physical (direct) or indirect (functional) predicted by using a combination of
+genomic context, high-throughput experiments, conserved coexpression data and literature.
+
+The interaction scores were normalized by 1000 (Max possible score) to scale them to (0-1) level needed for the software.
+
+The following interaction data were used for making the predictions
+
+Chlamydomonas reinhardtii 3055.protein.links.v10.filtered.txt
+Arabidopsis thaliana 3702.protein.links.v10.txt
+COG.links.v10.txt
+
+3055.protein.actions.v10.txt
+3702.protein.actions.v10.txt
+
+The predicted links from StringdB were combined with COG family links using the following rules:
+
+if(BOTH Source and Target are NOT members of COG families){
+	
+	if(ONLY Source is a member of COG family) {Replace Source with COG Family} 
+
+	else if(ONLY TARGET is a member of COG family) {Replace TARGET with COG Family} 
+
+	else if(BOTH TARGET and SOURCE are members of COG family) {Replace TARGET and SOURCE with COG families}
+}
+
+The following files obtained from StringdB are used for the merging step.
+COG.mappings.v10.txt
+Tair_COG.mappings.txt
+Chlamy_COG.mappings.txt
+
+####################################################################################################################################
+
+
+Steps in the analysis:
+
+1. Functional Annotation: This step involves the transfer of functional annotations from the source to the target sequences.
+
+1. Create Source Annotation Graph:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx200G -XX:ParallelGCThreads=2 -jar Create_Annotation_Graph.jar files/SourceDirectory
+
+Running this Program will merge all the source annotation files into an AnnotationGraph with the format here.
+
+2. Create a list of source sequences with id mappings in the following format.
+
+numberid > geneID
+example
+1 > AT1G01010.1
+2 > AT1G01020.1
+3 > AT1G01020.2
+
+3. Run the RandomwithRestart starting from the source genes, one at a time.
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx200G -XX:ParallelGCThreads=2 -jar RandomWalkwithRestart.jar files/BlastResults/Networks/AllvsAll.1e-20.abcd files/SourceAnnotations/Ehux.sources.list 0.0001 5 2 25 files/Results/Annotations/Population.1e-30.cliqueset1.wrst.txt files/Results/Annotations/Fflowwithstats.1e-20.wrst.txt
+
+Click here for understanding the parameters.
+
+The program outputs a functionflow graph file of the form below:
+
+Source		Target		orthoscore	Norm.orthoscore	species.norm.orthoscore
+AT1G12410.1	Emihu1_363248	0.019	0.713	0.744
+AT1G12410.1	Emihu1_46366	0.022	0.814	0.85
+AT1G12410.1	Cre16.g682900.t1.2	0.026	0.974	0.999
+AT1G12410.1	Cre12.g521450.t1.1	0.022	0.842	0.864
+AT1G12410.1	Emihu1_368559	0.021	0.795	0.83
+AT1G12410.1	ATCG00670.1	0.023	0.856	0.882
+AT1G12410.1	Emihu1_433678	0.023	0.851	0.888
+AT1G12410.1	Cre16.g682900.t2.1	0.026	0.974	1.0
+AT1G12410.1	Thaps3_36350	0.024	0.891	1.0
+AT1G12410.1	Emihu1_365741	0.023	0.881	0.92
+
+4. Filter and FunctionFlow Results for a threshold using the following script. We use 0.7 as the cut-off for the norm.orthofuzz score in this run. You can cutoff by p-value or species.norm.orthosscore.
+
+awk '{if($4 >= 0.7){print}}' files/Results/Annotations/Fflowwithstats.1e-20.wrst.txt > files/Results/Annotations/Fflowwithstats.1e-20.wrst.filtered.0.7.txt
+
+5. Run the TransferAnnotation program
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx200G -XX:ParallelGCThreads=2 -jar TranferAnnotationsParalellSourcetoContigEhux.jar files/SourceAnnotations/AnnotationsGraph.Ehux.txt files/Results/Annotations/Fflowwithstats.1e-20.wrst.filtered.0.7.txt files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt,files/ExpressionSummary/Expression_Big/Expression.unmapped.formatted.FPKM files/BlastResults/Networks/AllvsAll.1e-20.abcd_Best_Hits.map Ehux files/Results/Annotations/Contig_Annotations.1e-20.0.7.txt files/Results/Annotations/Contig_AnnotationGraph.1e-20.0.7.txt files/Results/Annotations/Contig_Annotations.1e-20.0.7.summary.txt
+
+Click here for understanding the parameters.
+
+Each Annotation has a score assigned to it based on the number of sources having that annotation and how similar the sources
+are to the target contigs. 
+
+The TransferAnnotation program produces the following files:
+
+1. Contig.Annotation.Graph.txt
+Contig annotations in a graph format
+
+Target			Organism	Annotation	Annotationtype	Score
+comp36351_c0_seq1	Br	KOG0254	KOG	5.0
+comp36351_c0_seq1	Br	GO:0043090	GO	1.0
+comp36351_c0_seq1	Br	GO:0031348	GO	1.0
+comp36351_c0_seq1	Br	GO:0090406	GO	1.0
+comp36351_c0_seq1	Br	GO:0015168	GO	1.0
+comp36351_c0_seq1	Br	GO:0015575	GO	1.0
+comp36351_c0_seq1	Br	polyol/monosaccharide transporter 1	Names	1.0
+comp36351_c0_seq1	Br	GO:0015144	GO	4.0
+comp36351_c0_seq1	Br	GO:0015145	GO	1.0
+comp36351_c0_seq1	Br	GO:0015749	GO	1.0
+
+
+2. Contig_Annotations.1e-20.0.7.txt : 
+Listing ALL the annotations associated with the contigs in a text file.
+
+Example:
+
+ID: comp10342_c0_seq5
+Top-Names:
+Ribosomal protein S5/Elongation factor G/III/V family protein	1.0	3.0
+Top 10 key-words in annotation descriptions:
+(12.0),factor(10.0),cellular_component(9.0),molecular_function(5.0),AN(4.0),domain(3.0),GTP(2.0),protein(2.0),Peptide-release(2.0),Tu(2.0),
+Annotations Summary:
+Top EC-IDs:
+EC	3.6.5.3	1.0	3.0
+
+ DE   Protein-synthesizing GTPase.
+ AN   Elongation factor (EF).
+ AN   Initiation factor (IF).
+ AN   Peptide-release factor (RF).
+ AN   Peptide-release or termination factor.
+ CA   GTP + H(2)O = GDP + phosphate.
+ //
+Ranked Annotations:
+
+GO	GO:0005525	GTP binding molecular function	1.0	3.0
+Panther	PTHR23115:SF4		1.0	3.0
+Panther	PTHR23115	translation factor	1.0	3.0
+GO	GO:0005737	cytoplasm cellular component	1.0	3.0
+Pfam	PF03144	GTP_EFTU_D2:Elongation factor Tu domain 2	1.0	3.0
+GO	GO:0003924	GTPase activity molecular function	1.0	3.0
+Pfam	PF03764	EFG_IV:Elongation factor G, domain IV	1.0	3.0
+KOG	KOG0469	Elongation factor 2	1.0	3.0
+Pfam	PF00009	GTP_EFTU:Elongation factor Tu GTP binding domain	1.0	3.0
+Pfam	PF00679	EFG_C:Elongation factor G C-terminus	1.0	3.0
+Neighbors:
+Tair:
+AT3G12915.2,AT3G12915.1,AT1G56070.1
+Zea:
+AC203173.3_FGT004,GRMZM2G040369_T02,GRMZM2G040369_T01,GRMZM2G113250_T01,GRMZM2G095851_T02,GRMZM2G095851_T01
+
+3. Contig_Annotations.1e-20.0.7.summary.txt
+Listing FILTERED (filter by annotation score) the annotations associated with the contigs in a text file.
+
+Click here for understanding the Column headers:
+ID	Description	ClosestSourceGenes(evalue)	EC-ID	Freq.2	Freq.3	Freq.4	Freq.5	Freq.6	Freq.7	Freq.8	Freq.9	Freq.10Freq.11	Freq.12	Transdecode-Annotations	pathways	GO	Pfam	Panther	KOG
+comp36351_c0_seq1	Major facilitator superfamily protein(2.0); 	Emihu1_209149(3.0E-23)	--	5.3.1.4(2.0); 		36.81	24.20	66.55	78.79	0.00	42.87	56.27	28.32	55.85	28.48	40.85	0.00	17.04	28.81	42.47	22.29	32.91	88.37	32.54	46.59	110.09	76.17	41.64	58.65	0.00	45.78	11.29	25.48	37.51	50.67	74.96	101.05	112.88	42.18	59.34	54.90	66.05	31.51	42.03	28.53	38.37	0.00	10.24	32.64	0.00	45.34	68.43	--	--	GO:0055085(4.0); GO:0022891(4.0); GO:0005886(4.0); GO:0015144(4.0); GO:0005351(6.0); GO:0016021(6.0); GO:0022857(4.0); GO:0016020(6.0); GO:0008643(2.0); GO:0006810(6.0); GO:0005215(6.0); GO:0008733(2.0); 	PF00083(5.0); 	PTHR24063:SF85(4.0); PTHR24063(4.0); 	KOG0254(5.0); 
+comp10342_c0_seq5	--	comp10342_c0_seq1(0.0)	--	4.1.1.49(2.0); 		16.42	13.31	5.64	4.83	14.10	10.62	9.68	10.30	11.27	25.50	26.24	0.00	2.44	6.91	10.26	8.39	3.71	3.93	4.63	8.54	8.32	4.23	2.82	5.18	7.48	15.82	18.95	1.69	2.06	5.12	2.36	5.53	2.88	1.59	0.98	21.14	17.53	0.00	2.11	4.27	6.90	8.60	4.98	3.32	2.28	1.78	3.87	comp10342_c0_seq5|m.28939[internal 563(+);--;PF01293.15(1e-200);],comp10342_c0_seq5|m.28940[5prime_partial 365(+);--;--;],	--	GO:0005525(2.0); GO:0005524(2.0); GO:0004612(2.0); GO:0006094(2.0); GO:0004611(2.0); 
+
+6. Run the TransferExpression program for the query maps:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar TranferExpression.jar files/SourceAnnotations/Biocyc/maps/aracyc.chlamycyc.map files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt,files/ExpressionSummary/Expression_Big/Expression.unmapped.formatted.FPKM files/BlastResults/Networks/AllvsAll.1e-20.abcd 0.0001 25 2 50 files/Results/Pathways/Biocyc/Pathway_Expressions_biocyc_ Ehux 0.80
+
+The program produces two files:
+
+1. Enzyme Expression File:
+
+Pathway_Name	Enzyme_ID	Symbol	EC_ID	QuerySequences	Neighbors(Orthofuzz Score)	A10D_L1	A10D_L2	A10L_L1	A10L_L2	A11D_L1	A11D_L2	A11L_L1	A11L_L2	A2_L1	A2_L2	A4_L1	A4_L2	A6_L1	A6_L2	A9_L1	A9_L2	B10D_L1	B10D_L2	B10L_L1	B10L_L2	B11D_L1	B11D_L2	B11L_L1	B11L_L2	B2_L1	B2_L2	B4_L1	B4_L2	B6_L1	B6_L2	B9_L1	B9_L2	C10D_L1	C10D_L2	C10L_L1	C10L_L2	C11D_L1	C11D_L2	C11L_L1	C11L_L2	C2_L1	C2_L2	C4_L1	C4_L2	C6_L1	C6_L2	C9_L1	C9_L2	GeneSetMeasure	GeneSetStatistics
+Acetate_Assimilation	Acyl-CoA_synthetase	ACS1	6.2.1.1	AT5G36880.2;AT5G36880.1;Cre07.g353450.t1.2;Cre01.g055408.t1.1;Cre01.g071662.t1.1;	comp29679_c0_seq2[0.838,0.838,0.001];Emihu1_465551[0.815,0.815,0.001];Emihu1_451133[1,1,0];Emihu1_64778[0.975,0.975,0];		171.784	174.457	170.643	186.029	161.742	120.026	201.972	193.528	65.731	61.939	28.481	24.184	130.432	140.808	181.941	187.478	177.183	184.775	182.561	191.366	160.596	155.277	206.676	197.372	59.061	60.112	25.7	23.888	126.02	130.663	200.62	193.044	174.98	163.389	189.406	193.928	152.565	145.301	200.82	209.367	79.044	75.302	31.18	30.364	104.304	106.628	188.678	185.163		5.578	0
+Aminoacid_metabolism	Alanine_aminotransferase	ALT	2.6.1.2	AT1G72330.3;AT1G72330.1;AT1G72330.2;AT1G23310.2;AT1G23310.1;AT1G70580.4;AT1G70580.3;AT1G70580.2;AT1G70580.1;AT1G17290.1;Cre10.g451950.t1.2;Cre06.g284700.t1.2;	Emihu1_447795[0.986,1,0];Emihu1_417644[0.975,0.99,0];comp15863_c0_seq1[0.925,0.939,0];		94.227	92.999	96.699	88.622	88.369	86.033	94.299	112.974	33.09	33.342	48.757	18.803	66.374	80.751	126.524	122.047	96.165	92.501	108.922	109.142	99.767	99.141	106.167	113.58	52.764	36.441	18.754	18.902	100.981	72.033	106.845	128.468	112.231	92.976	111.562	106.759	114.521	90.638	113.588	102.298	42.403	66.871	17.102	17.373	64.615	58.587	118.125	124.151		5.082	0.073
+
+2. Pathways Enriched with Gene-Set Statistics:
+
+Pathway name	GeneSetStatistics	p-Value
+Prokaryotic_Galactolipid,_Sulfolipid,_&_Phospholipid_Synthesis_2	4.251	0.664
+Suberin_Synthesis_&_Transport_3	5.476	0
+Prokaryotic_Galactolipid,_Sulfolipid,_&_Phospholipid_Synthesis_1	5.035	0.02
+Suberin_Synthesis_&_Transport_1	5.298	0.008
+Glyoxylate_Metabolism	4.642	0.121
+Lipid_Trafficking	5.307	0.008
+
+
+3. Finding Interactions in the Target Organism:
+
+
+3.1: Run RandomwalkwithRestart for sequences for sources with interaction data:
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar FunctionFlow.jar files/BlastResults/1e-20/AllvsAll.1e-20.abcd files/StringDB/tair/Tair.withinteractiondata.list 0.0001 25 2 50 files/Results/Interactions/Population.1e-20.txt files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt
+date
+echo format orthofuzz results
+
+sed 's/\],/\t/g' files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt | awk '{for(i=2;i<=NF;i++){print $i"\t"$1}}' | sed 's/^,//g;s/\[/\t/g;s/\]//g;s/,/\t/g' | awk '{if($(NF-1) < 0.1){print}}' > files/Results/Interactions/Node_Parameters.Flow.1e-30.wrst.filtered.0.1.abcd
+
+date
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar PredictIntreactionsparalell.jar files/StringDB/tair/Tair.interaction.stringdb.links.filtered.abc 0.7 files/Results/Interactions/Fflowwithstats.1e-20.wrst.txt 0.70 0.50 files/Results/Interactions/PredictedInteractions.test files/ExpressionSummary/Expression_Big/Expression_FPKM.formatted.txt	files/SourceAnnotations/Names/Tair_Names.map
+
+date
+cd files/Results/Interactions/
+
+sed 's/ /_/g' PredictedInteractions.test_Predicted_Interactions.txt | awk '{print $1"\t"$3"\t"$NF}' > Interactions.clusterone.in.txt
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar /work/bbmb_1/ajose/cluster_one/cluster_one-0.92.jar -F genepro Interactions.clusterone.in.txt > Interactions.clusterone.out.txt; 
+
+awk '{if($1"_"$2 != C){print C"\t"S;C=$1"_"$2;S=$3} else {S=S","$3}} END {print C"\t"S}' Interactions.clusterone.out.txt >  Clusterone.out.formatted.txt
+
+date
+
+#date
+#echo Measuring flow from sources
+sed 's/ /_/g' PredictedInteractions.test_Expression_Values_of_Interaction_Units.txt | awk '{x=$1;for(i=4;i<=NF;i++){x=x"\t"$i};print x}' > IU_Expression.FPKM.formatted.txt
+sed 's/ /_/g'  PredictedInteractions.test_Predicted_Interactions.txt  | awk '{print $1"\t"$3"\t"$5}' > PredictedInteractions.formatted.list
+
+cd /work/bbmb_1/ajose/javajob/Ehux
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar ParallelColtCorrelation.jar files/Results/Interactions/IU_Expression.FPKM.formatted.txt 5.0 files/Results/Interactions/IU_Coexpression.formatted.txt
+
+
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar NetworkAND.jar files/Results/Interactions/PredictedInteractions.formatted.list 0.5 files/Results/Interactions/IU_Coexpression.formatted.txt 0.5 0.5 files/Results/Interactions/Interactions_Intersection_AND_Coexpression.txt
+
+# need to cluster this output
+cd files/Results/Interactions/
+/work/bbmb_1/ajose/java/jdk1.8.0_40/bin/java -Xmx128G -XX:ParallelGCThreads=2 -jar /work/bbmb_1/ajose/cluster_one/cluster_one-0.92.jar -F genepro Interactions_Intersection_AND_Coexpression.txt > Interactions_Intersection_AND_Coexpression.clusterone.out.txt; 
+
+
+
+
+
+
+
+
+Summary of the Interaction Units:
+
+Predicted Interaction Units with Statistics:
+Name	Description	Query_Terms	Members[norm.score,spec.norm.score]
+NOG01105	  Serinc-domain containing serine and sphingolipid biosynthesis protein(72)	[GRMZM2G018756_T01,GRMZM2G114001_T02,GRMZM2G114001_T01,GRMZM2G088356_T01,AC195220.3_FGT007,AT3G24460.1,GRMZM2G115624_T01,LOC_Os04g42720.1,AT4G13345.2,AT4G13345.1,AT2G33205.1,LOC_Os01g08460.1,GRMZM2G154293_T01,GRMZM2G018756_T02,];	w64a_TR11395_c0_g1_i1[0.741,1,0];w64a_TR11395_c0_g2_i1[0.672,0.907,0];
+
+
+
+Predicted Interactions with Shannon Entropy Score and Gene Set Statistics estimated from max mean statistic:
+
+NOG14132	 protein amino acid phosphorylation(32)	COG5333	 Cdk activating kinase (CAK)/RNA polymerase II transcription initiation/nucleotide excision repair factor TFIIH/TFIIK, cyclin H subunit	0.855	--
+
+
+Predicted_Expression_Values_of_Interaction_Units_Organism.txt
+
+Name	Description	MembersFreq.12	Freq.11	Freq.10	Freq.9	Freq.8	Freq.7	Freq.6	Freq.5	Freq.4	Freq.3	Freq.2	Freq.1	Average	ShannonEntropy
+NOG01105	  Serinc-domain containing serine and sphingolipid biosynthesis protein(72)	[GRMZM2G018756_T01,GRMZM2G114001_T02,GRMZM2G114001_T01,GRMZM2G088356_T01,AC195220.3_FGT007,AT3G24460.1,GRMZM2G115624_T01,LOC_Os04g42720.1,AT4G13345.2,AT4G13345.1,AT2G33205.1,LOC_Os01g08460.1,GRMZM2G154293_T01,GRMZM2G018756_T02,];	Mo17_TR9169_c0_g1_i2[0.672,1,0];Mo17_TR9169_c0_g1_i1[0.672,1,0];	0.0	2.0	6.0	0.0	2.0	6.0	2.0	0.0	0.0	2.0	2.0	2.0	3.0	1.459
+
+
+
+
+ClusterLabeledExpression.MO17.txt
+ClusterID	InteractionUnit		Description	
+Cluster_442	NOG03775	 Protein of unknown function DUF92, transmembrane(35) 	
+
+Query Members
+[LOC_Os01g08290.1,GRMZM2G028774_T01,LOC_Os01g32280.1,GRMZM2G163307_T03,GRMZM2G163307_T02,AT5G19930.2,AT5G19930.1,GRMZM2G163307_T01,GRMZM2G028774_T02,]; 
+
+Target Members which meets the cut-off
+Mo17_TR9826_c5_g1_i1[0.859,1,0]; 
+
+Summarized expression levels
+0.0 2.0 2.0 0.0 0.0 0.0 2.0 0.0 0.0 0.0 0.0 0.0 2.0 
+
+Shannon's Entropy
+0.811
+
+
+Predicted Protein Complexes from ClusterOne.out
+
+Cluster_1	NOG145194,NOG121747,NOG126842,NOG128254,NOG119590,NOG276841
+Cluster_2	NOG10563,NOG279618,NOG45671,NOG137717
+Cluster_3	NOG14132,NOG125023,NOG08996
+
+
+
+Cluster Statistics file which estimates Shannon Entropy for each Interaction Units in a cluster and estimate Gene Set Enrichment Statistics based on the Entropy scores:
+
+Cluster_1	 Aluminium induced protein with YGL and LRDR motifs(54)/ protein with ARM repeat domain(95)/	{NOG145194,NOG121747,NOG126842,NOG128254,NOG119590,NOG276841,}	3.168	0
+
+
+
+

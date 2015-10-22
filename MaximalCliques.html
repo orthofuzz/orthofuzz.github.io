@@ -1,5 +1,6 @@
+<FONT FACE="garamond" size=4>
 <p>
-    <em><h3>Maximal Cliques:</h3></em>
+    <em><h3>FindMaximalCliques:</h3></em>
 </p>
 <p>
     <em> </em>
@@ -40,17 +41,20 @@ for enumerating maximal cliques. Degeneracy <em>d </em>is the smallest number, s
     3. Heuristic optimizations to reduce search space: A size check is incorporated to ensure that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mi>P</mi> <mo>&#x222A;<!-- ∪ --></mo> <mtext>&#xA0;</mtext> <mi>R</mi> <mrow class="MJX-TeXAtom-ORD"> <mo stretchy="false">|</mo> </mrow> <mo>&#x2265;<!-- ≥ --></mo> <mtext>&#xA0;</mtext> <mi>m</mi> <mi>i</mi> <mi>n</mi> <mo>.</mo> <mtext>&#xA0;</mtext> <mi>c</mi> <mi>l</mi> <mi>i</mi> <mi>q</mi> <mi>u</mi> <mi>e</mi> <mtext>&#xA0;</mtext> <mi>s</mi> <mi>i</mi> <mi>z</mi> <mi>e</mi> </math>. A heuristic is used to trim-edges off the All-vs-All
     BLAST network based on e-value to reduce the size of the network to find the cliques. For each sequence, all edges with e-values &le; 1e-50 are retained.
     If there are no hits with e-value &le; 1e-50, only the best hit is retained in the trimmed network.
+    
+    4.Extracting representative cliques: Each node can be members of multiple maximal cliques. We only retain the node in the clique in which it has maximum number of network neighbor nodes as members of the clique.
 </p>              
 
 <h4>Downloads:</h4>
-<a href="RandomWalkCluster.latex.pdf">The algorithms implemented</a>
+<a href="algorithms/Maximal_Representative_Cliques.pdf" target="_blank">The detailed description of the algorithms</a>
 </p>
 <p>
-<a href="Input.formats.html"> Check here for parameters of the program </a>
+<a href="ProgramManual.html" target="_blank"> Check here for parameters of the program </a>
 </p>
 <p>
-<a href="Input.formats.html"> Look here for an example run </a>
+<a href="ExampleRun.html" target="_blank"> Look here for an example run </a>
 </p>
 <p>
-<a href="RandomWalkCluster.latex.pdf">Download the jar file here</a>
+<a href="jar/FindmaximalCliques.jar" target="_blank">Download the jar file here</a>
 </p>
+</FONT>

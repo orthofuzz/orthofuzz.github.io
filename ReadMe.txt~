@@ -1,0 +1,401 @@
+
+
+Data Preperation:
+
+1. Sequence Data: 
+
+You have to select a set of organisms the sequences and annotations of which you want to base the annotations of this organism on. Running some test blasts on the NCBI Blast website using some random contig sequences from the organism can act as a useful guide.
+
+We use (1) How well verified is the source genome annotations and (2) how confident are we of the original genome annotation of the source sequences to identify source sequences. The quality and quantity of the source annotations is going to determine the quality of the target annotations.
+
+Reference Sequences:
+
+Collect all the translated gene models of the source organisms together with the target contig sequences in one place.
+
+2. Source Annotations
+
+2.1 Pathway Mappings:
+You have to download the pathway mappings for the source sequences and get the mappings in the format shown here. 
+
+Header and Example Row
+pathway	Protein_Family_Name	Protein_Family_Abbreviation	EC_number	Members	
+Acetate_Assimilation	Acyl-CoA_synthetase	ACS1	6.2.1.1	AT5G36880.1,AT5G36880.2
+
+(1) Aralip:
+
+(a) Mappings:
+Lipid Metabolism related Genes and pathway assignments were extracted from http://aralip.plantbiology.msu.edu/data/aralip_data.xlsx
+Genes related to basic carbon metabolism were curated manually. The chlamydomonas genes were also curated manually using the annotations from phytozome and literature.
+
+All the aralip mappings are included in the Tair_Chlamy_Maps.txt which has 531 mappings.
+
+(2) Biocyc:
+
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted to match the
+format shown here.
+
+(a) Mappings:
+There are 3176 mappings in the aracyc.chlamycyc.map
+
+(b) Pathway Mappings:
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted as gene<tab>pathway format here.
+
+There are 5861 arabidopsis thaliana genes and 2351 chlamydomonas reinhardtii genes associated with the pathways.
+
+2.2 Functional Annotations
+
+We decided to use functional annotations from five source organisms for the study.
+
+1. Arabidopsis thaliana
+2. Chlamydomonas reinhardtii
+3. Phaeodactylum tricornutum
+4. Thalassiosira pseudonana
+5. Emiliania huxleyi
+4. Protein sequences associated with the mitochondrial and chloroplasts of Emiliania huxleyi which are not included in the jgi gene model set were downloaded from NCBI and added to the set of source sequences.
+
+The latest protein sequences obtained from translations of their gene-models were compiled and the functional annotations assigned to these sequences were compiled
+from http://phytozome.jgi.doe.gov/pz/portal.html# 
+
+Protein Sequence Data (Number of sequences) were downloaded from http://phytozome.jgi.doe.gov/pz/portal.html hosted by the 
+joint genome institute:
+
+Version	(Number of Sequences - Both cDNA/Gene models and amino acid sequences)
+Athaliana 167 TAIR10.protein.forblast.fa	(35386)
+Creinhardtii 281 v5.5.protein.fa	(19526)
+Emihu1 best proteins.fasta	(39125)
+Emihu1 Chloroplast.proteins.fa	(284)
+Emihu1 Mitochondria.proteins.fa	(61)
+Phatr2 filtered.forblast.fa	(10025)
+Thaps3.proteins.all.fa	(11776)
+Trinity Ehux Unmapped.fasta	(32160)
+
+The functional annotations were downloaded and parsed out from:
+
+Athaliana_167_TAIR10.annotation_info.txt
+Creinhardtii_281_v5.5.annotation_info.txt
+http://genome.jgi-psf.org/Emihu1/Emihu1.download.ftp.html
+http://genome.jgi-psf.org/Phatr2/Phatr2.download.ftp.html
+http://genome.jgi-psf.org/Thaps3/Thaps3.home.html
+
+
+The annotations were grouped into different folders based on the type of the annotations. The annotations are in tab delimited format
+Example rows
+
+SourceID<tab>Annotation
+AT1G01046	GO:0003674
+
+
+./CrossMappings:
+
+Cross Mappings between different Annotations
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+source
+Tair_Loci_ID.map
+
+./ECMappings:
+Chlamy_EC.map
+Ehux_EC.map
+Phatr2_EC.map
+Tair_EC.map
+Thaps3_EC.map
+
+./GOMappings:
+Chlamy_GO.map
+Ehux_GO.map
+Phatr2_GO.map
+Tair_GO.map
+
+./IPRMappings:
+Phatr2_IPR.map
+Thaps3_IPR.map
+
+./KOGMappings:
+Chlamy_KOG.map
+Ehux_KOG.map
+Phatr2_KOG.map
+Tair_KOG.map
+Thaps3_KOG.map
+
+./Names:
+Tair_KOG_Chlamy_Names.map
+
+
+./PANTHERMappings:
+Chlamy_Panther.map
+Tair_Panther.map
+
+./PfamMappings:
+Chlamy_Pfam.map
+Phatr2_Pfam.map
+Tair_Pfam.map
+Thaps3_Pfam.map
+
+
+./ECMappings
+
+
+./Descriptions:
+
+The descriptions associated with different functional annotation terms of data were obtained from:
+http://eggnog.embl.de/version_3.0/downloads.html
+http://eggnog.embl.de/version_3.0/data/downloads/all.description.tar.gz
+ftp://ftp.ebi.ac.uk/pub/databases/interpro/Current/ParentChildTreeFile.txt
+
+
+The descriptions were formatted into the required tab delimited format to get the
+following files.
+
+EC_Descriptions.txt
+GO_Descriptions.txt
+IPR_Names.txt
+KOG.description.txt
+OrthologGroup_Descriptions.map
+Panther10.0_classifications.txt
+Pfam.names.formatted.txt
+
+
+./CrossMappings:
+
+The cross term mappings were obtained from geneontology.org/external2go/
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+Tair_Loci_ID.map
+
+
+########INTERACTION DATA#######
+
+StringDB Interaction Data (http://string-db.org/)
+
+STRING database has a collection of known and predicted protein interaction data. The interactions can be physical (direct) or indirect (functional) predicted by using a combination of
+genomic context, high-throughput experiments, conserved coexpression data and literature.
+
+The interaction scores were normalized by 1000 (Max possible score) to scale them to (0-1) level needed for the software.
+
+The following interaction data were used for making the predictions
+
+Chlamydomonas reinhardtii 3055.protein.links.v10.filtered.txt
+Arabidopsis thaliana 3702.protein.links.v10.txt
+COG.links.v10.txt
+
+3055.protein.actions.v10.txt
+3702.protein.actions.v10.txt
+
+The predicted links from StringdB were combined with COG family links using the following rules:
+
+if(BOTH Source and Target are NOT members of COG families){
+	
+	if(ONLY Source is a member of COG family) {Replace Source with COG Family} 
+
+	else if(ONLY TARGET is a member of COG family) {Replace TARGET with COG Family} 
+
+	else if(BOTH TARGET and SOURCE are members of COG family) {Replace TARGET and SOURCE with COG families}
+}
+
+The following files obtained from StringdB are used for the merging step.
+COG.mappings.v10.txt
+Tair_COG.mappings.txt
+Chlamy_COG.mappings.txt
+
+######################
+
+
+The Orthofuzz analysis produces the following results
+
+The results of the runs are organized into three folders the contents of the files are detailed below.
+
+
+###################################################
+
+
+./Annotations:
+
+The core of the programs is an algorithm which takes an edge weighted pairwise sequence similarity network and
+a set of start nodes to create a list of neighbors which are written into Fflowwithstats.1e-20.wrst.txt file
+with the format:
+
+SourceID	DestID			Score	(Norm by Max Score) (Norm by within TargetSpecies Max Score)
+AT3G04500.1	LOC_Os02g40900.1	0.079		0.931			0.995
+
+We use the neighbors filtered out for Norm by Max Scores >= 0.7  from Fflowwithstats.1e-20.wrst.filtered.0.7.txt for further analysis. 
+
+
+The functional annotations assigned by TransferAnnotation program are organized in two folders split based on the organism
+
+MO17
+W64
+
+Each folder has the following files:
+
+OrganismName.Annotations.txt which has the columns:
+
+Each Annotation has a score assigned to it based on the number of sources having that annotation and how similar the sources
+are to the target contigs.
+
+ID
+Description
+ClosestSourceGenes(evalue)
+EC-ID
+Freq.12
+Freq.11
+Freq.10
+Freq.9
+Freq.8
+Freq.7
+Freq.6
+Freq.5
+Freq.4
+Freq.3
+Freq.2
+Freq.1
+Transdecode-Annotations
+pathways
+GO
+Pfam
+Panther
+KOG
+
+Contig_Annotations.Graph.txt which has the annotations in a graph format:
+
+Target			Organism	Annotation	Annotationtype	Score
+AC233894.1_FGT005	Zea	GO:0003674	GO	1.0
+
+
+Contig_Annotations.list.txt :  which lists the annotations of the targets one contig at a time:
+
+Example:
+
+ID: Mo17_TR4687_c0_g2_i1
+Top-Names:
+Ribosomal protein S5/Elongation factor G/III/V family protein	1.0	3.0
+Top 10 key-words in annotation descriptions:
+(12.0),factor(10.0),cellular_component(9.0),molecular_function(5.0),AN(4.0),domain(3.0),GTP(2.0),protein(2.0),Peptide-release(2.0),Tu(2.0),
+Annotations Summary:
+Top EC-IDs:
+EC	3.6.5.3	1.0	3.0
+
+ DE   Protein-synthesizing GTPase.
+ AN   Elongation factor (EF).
+ AN   Initiation factor (IF).
+ AN   Peptide-release factor (RF).
+ AN   Peptide-release or termination factor.
+ CA   GTP + H(2)O = GDP + phosphate.
+ //
+Ranked Annotations:
+
+GO	GO:0005525	GTP binding molecular function	1.0	3.0
+Panther	PTHR23115:SF4		1.0	3.0
+Panther	PTHR23115	translation factor	1.0	3.0
+GO	GO:0005737	cytoplasm cellular component	1.0	3.0
+Pfam	PF03144	GTP_EFTU_D2:Elongation factor Tu domain 2	1.0	3.0
+GO	GO:0003924	GTPase activity molecular function	1.0	3.0
+Pfam	PF03764	EFG_IV:Elongation factor G, domain IV	1.0	3.0
+KOG	KOG0469	Elongation factor 2	1.0	3.0
+Pfam	PF00009	GTP_EFTU:Elongation factor Tu GTP binding domain	1.0	3.0
+Pfam	PF00679	EFG_C:Elongation factor G C-terminus	1.0	3.0
+Neighbors:
+Tair:
+AT3G12915.2,AT3G12915.1,AT1G56070.1
+Zea:
+AC203173.3_FGT004,GRMZM2G040369_T02,GRMZM2G040369_T01,GRMZM2G113250_T01,GRMZM2G095851_T02,GRMZM2G095851_T01
+
+
+
+###################################################
+
+
+
+./Pathways:
+
+
+
+
+./Pathways/Aralip:
+
+The pathway query sets are curated from Biocyc and Aralip databases. 
+
+
+Pathway_Expressions_Aralip__Organism_pathwaystats.txt
+
+
+Pathway name	GeneSetStatistics	p-Value
+Suberin_Synthesis_&_Transport_3	0.65	0.914
+
+
+Pathway_Expressions_Aralip__Organism.txt
+
+Pathway_Name	Enzyme_ID	Symbol	EC_ID	QuerySequences	Neighbors(Orthofuzz Score)	Freq.12	Freq.11	Freq.10	Freq.9	Freq.8	Freq.7	Freq.6	Freq.5	Freq.4	Freq.3	Freq.2	Freq.1	GeneSetMeasure	GeneSetStatistics
+
+Pathway_Name	Enzyme_ID	Symbol	EC_ID	QuerySequences	Neighbors(Orthofuzz Score)	Freq.12	Freq.11	Freq.10	Freq.9	Freq.8	Freq.7	Freq.6	Freq.5	Freq.4	Freq.3	Freq.2	Freq.1	GeneSetMeasure	GeneSetStatistics
+Fatty_Acid_Elongation_&_Wax_Biosynthesis	ATP_Citrate_Lyase_B_subunit	ATP-CL-beta	4.1.3.8	AT5G49460.1;AT3G06650.1;	Mo17_TR9455_c2_g1_i1[0.948,0.022],	5.686	26.534	34.116	15.162	22.744	15.162	13.267	22.744	32.22	13.267	26.534	30.325		2.918	2.918	0
+
+
+
+
+
+
+###################################################
+
+
+
+
+
+./Interactions:
+
+Summary of the Interaction Units:
+
+Predicted Interaction Units with Statistics:
+Name	Description	Query_Terms	Members[norm.score,spec.norm.score]
+NOG01105	  Serinc-domain containing serine and sphingolipid biosynthesis protein(72)	[GRMZM2G018756_T01,GRMZM2G114001_T02,GRMZM2G114001_T01,GRMZM2G088356_T01,AC195220.3_FGT007,AT3G24460.1,GRMZM2G115624_T01,LOC_Os04g42720.1,AT4G13345.2,AT4G13345.1,AT2G33205.1,LOC_Os01g08460.1,GRMZM2G154293_T01,GRMZM2G018756_T02,];	w64a_TR11395_c0_g1_i1[0.741,1,0];w64a_TR11395_c0_g2_i1[0.672,0.907,0];
+
+
+
+Predicted Interactions with Shannon Entropy Score and Gene Set Statistics estimated from max mean statistic:
+
+NOG14132	 protein amino acid phosphorylation(32)	COG5333	 Cdk activating kinase (CAK)/RNA polymerase II transcription initiation/nucleotide excision repair factor TFIIH/TFIIK, cyclin H subunit	0.855	--
+
+
+Predicted_Expression_Values_of_Interaction_Units_Organism.txt
+
+Name	Description	MembersFreq.12	Freq.11	Freq.10	Freq.9	Freq.8	Freq.7	Freq.6	Freq.5	Freq.4	Freq.3	Freq.2	Freq.1	Average	ShannonEntropy
+NOG01105	  Serinc-domain containing serine and sphingolipid biosynthesis protein(72)	[GRMZM2G018756_T01,GRMZM2G114001_T02,GRMZM2G114001_T01,GRMZM2G088356_T01,AC195220.3_FGT007,AT3G24460.1,GRMZM2G115624_T01,LOC_Os04g42720.1,AT4G13345.2,AT4G13345.1,AT2G33205.1,LOC_Os01g08460.1,GRMZM2G154293_T01,GRMZM2G018756_T02,];	Mo17_TR9169_c0_g1_i2[0.672,1,0];Mo17_TR9169_c0_g1_i1[0.672,1,0];	0.0	2.0	6.0	0.0	2.0	6.0	2.0	0.0	0.0	2.0	2.0	2.0	3.0	1.459
+
+
+
+
+ClusterLabeledExpression.MO17.txt
+ClusterID	InteractionUnit		Description	
+Cluster_442	NOG03775	 Protein of unknown function DUF92, transmembrane(35) 	
+
+Query Members
+[LOC_Os01g08290.1,GRMZM2G028774_T01,LOC_Os01g32280.1,GRMZM2G163307_T03,GRMZM2G163307_T02,AT5G19930.2,AT5G19930.1,GRMZM2G163307_T01,GRMZM2G028774_T02,]; 
+
+Target Members which meets the cut-off
+Mo17_TR9826_c5_g1_i1[0.859,1,0]; 
+
+Summarized expression levels
+0.0 2.0 2.0 0.0 0.0 0.0 2.0 0.0 0.0 0.0 0.0 0.0 2.0 
+
+Shannon's Entropy
+0.811
+
+
+Predicted Protein Complexes from ClusterOne.out
+
+Cluster_1	NOG145194,NOG121747,NOG126842,NOG128254,NOG119590,NOG276841
+Cluster_2	NOG10563,NOG279618,NOG45671,NOG137717
+Cluster_3	NOG14132,NOG125023,NOG08996
+
+
+
+Cluster Statistics file which estimates Shannon Entropy for each Interaction Units in a cluster and estimate Gene Set Enrichment Statistics based on the Entropy scores:
+
+Cluster_1	 Aluminium induced protein with YGL and LRDR motifs(54)/ protein with ARM repeat domain(95)/	{NOG145194,NOG121747,NOG126842,NOG128254,NOG119590,NOG276841,}	3.168	0
+
+
+
+

@@ -1,0 +1,201 @@
+1. Sequence Data: 
+
+Reference Sequences:
+
+a) The filtered sets of gene models were downloaded from joint genome institute [1] and clustered using CD-HIT-EST software[2]. All gene models with greater than 99% identity are clustered together sand represented with one representative sequence. 30340 gene models were retained after clustering.
+
+b) The short read sequences were mapped to the clustered gene-models. 
+
+c) The unmapped reads from all the samples were pooled together and assembled using denovo assembly software - Trinity. Trinity produced 32160 contigs.
+
+2. Source Annotations
+
+2.1 Pathway Mappings:
+
+The pathways associated with the arabidopsis and chlamydomonas gene-models were curated from different sources and parsed
+to the following format.
+
+Header and Example Row
+pathway	Protein_Family_Name	Protein_Family_Abbreviation	EC_number	Members	
+Acetate_Assimilation	Acyl-CoA_synthetase	ACS1	6.2.1.1	AT5G36880.1,AT5G36880.2
+
+(1) Aralip:
+
+(a) Mappings:
+Lipid Metabolism related Genes and pathway assignments were extracted from http://aralip.plantbiology.msu.edu/data/aralip_data.xlsx
+Genes related to basic carbon metabolism were curated manually. The chlamydomonas genes were also curated manually using the annotations from phytozome and literature.
+
+All the aralip mappings are included in the Tair_Chlamy_Maps.txt which has 531 mappings.
+
+(2) Biocyc:
+
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted to match the
+format shown here.
+
+(a) Mappings:
+There are 3176 mappings in the aracyc.chlamycyc.map
+
+(b) Pathway Mappings:
+The pathway mappings were downloaded from ftp://ftp.plantcyc.org/Pathways/Data_dumps/PMN10_June2015/ and formatted as gene<tab>pathway format here.
+
+There are 5861 arabidopsis thaliana genes and 2351 chlamydomonas reinhardtii genes associated with the pathways.
+
+2.2 Functional Annotations
+
+We decided to use functional annotations from five source organisms for the study.
+
+1. Arabidopsis thaliana
+2. Chlamydomonas reinhardtii
+3. Phaeodactylum tricornutum
+4. Thalassiosira pseudonana
+5. Emiliania huxleyi
+4. Protein sequences associated with the mitochondrial and chloroplasts of Emiliania huxleyi which are not included in the jgi gene model set were downloaded from NCBI and added to the set of source sequences.
+
+The latest protein sequences obtained from translations of their gene-models were compiled and the functional annotations assigned to these sequences were compiled
+from http://phytozome.jgi.doe.gov/pz/portal.html# 
+
+Protein Sequence Data (Number of sequences) were downloaded from http://phytozome.jgi.doe.gov/pz/portal.html hosted by the 
+joint genome institute:
+
+Version	(Number of Sequences - Both cDNA/Gene models and amino acid sequences)
+Athaliana 167 TAIR10.protein.forblast.fa	(35386)
+Creinhardtii 281 v5.5.protein.fa	(19526)
+Emihu1 best proteins.fasta	(39125)
+Emihu1 Chloroplast.proteins.fa	(284)
+Emihu1 Mitochondria.proteins.fa	(61)
+Phatr2 filtered.forblast.fa	(10025)
+Thaps3.proteins.all.fa	(11776)
+Trinity Ehux Unmapped.fasta	(32160)
+
+The functional annotations were downloaded and parsed out from:
+
+Athaliana_167_TAIR10.annotation_info.txt
+Creinhardtii_281_v5.5.annotation_info.txt
+http://genome.jgi-psf.org/Emihu1/Emihu1.download.ftp.html
+http://genome.jgi-psf.org/Phatr2/Phatr2.download.ftp.html
+http://genome.jgi-psf.org/Thaps3/Thaps3.home.html
+
+
+The annotations were grouped into different folders based on the type of the annotations. The annotations are in tab delimited format
+Example rows
+
+SourceID<tab>Annotation
+AT1G01046	GO:0003674
+
+
+./CrossMappings:
+
+Cross Mappings between different Annotations
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+source
+Tair_Loci_ID.map
+
+./ECMappings:
+Chlamy_EC.map
+Ehux_EC.map
+Phatr2_EC.map
+Tair_EC.map
+Thaps3_EC.map
+
+./GOMappings:
+Chlamy_GO.map
+Ehux_GO.map
+Phatr2_GO.map
+Tair_GO.map
+
+./IPRMappings:
+Phatr2_IPR.map
+Thaps3_IPR.map
+
+./KOGMappings:
+Chlamy_KOG.map
+Ehux_KOG.map
+Phatr2_KOG.map
+Tair_KOG.map
+Thaps3_KOG.map
+
+./Names:
+Tair_KOG_Chlamy_Names.map
+
+
+./PANTHERMappings:
+Chlamy_Panther.map
+Tair_Panther.map
+
+./PfamMappings:
+Chlamy_Pfam.map
+Phatr2_Pfam.map
+Tair_Pfam.map
+Thaps3_Pfam.map
+
+
+./ECMappings
+
+
+./Descriptions:
+
+The descriptions associated with different functional annotation terms of data were obtained from:
+http://eggnog.embl.de/version_3.0/downloads.html
+http://eggnog.embl.de/version_3.0/data/downloads/all.description.tar.gz
+ftp://ftp.ebi.ac.uk/pub/databases/interpro/Current/ParentChildTreeFile.txt
+
+
+The descriptions were formatted into the required tab delimited format to get the
+following files.
+
+EC_Descriptions.txt
+GO_Descriptions.txt
+IPR_Names.txt
+KOG.description.txt
+OrthologGroup_Descriptions.map
+Panther10.0_classifications.txt
+Pfam.names.formatted.txt
+
+
+./CrossMappings:
+
+The cross term mappings were obtained from geneontology.org/external2go/
+
+EC_GO.map
+InterPro_GO.map
+Pfam_GO.map
+Tair_Loci_ID.map
+
+
+########INTERACTION DATA#######
+
+StringDB Interaction Data (http://string-db.org/)
+
+STRING database has a collection of known and predicted protein interaction data. The interactions can be physical (direct) or indirect (functional) predicted by using a combination of
+genomic context, high-throughput experiments, conserved coexpression data and literature.
+
+The interaction scores were normalized by 1000 (Max possible score) to scale them to (0-1) level needed for the software.
+
+The following interaction data were used for making the predictions
+
+Chlamydomonas reinhardtii 3055.protein.links.v10.filtered.txt
+Arabidopsis thaliana 3702.protein.links.v10.txt
+COG.links.v10.txt
+
+3055.protein.actions.v10.txt
+3702.protein.actions.v10.txt
+
+The predicted links from StringdB were combined with COG family links using the following rules:
+
+if(BOTH Source and Target are NOT members of COG families){
+	
+	if(ONLY Source is a member of COG family) {Replace Source with COG Family} 
+
+	else if(ONLY TARGET is a member of COG family) {Replace TARGET with COG Family} 
+
+	else if(BOTH TARGET and SOURCE are members of COG family) {Replace TARGET and SOURCE with COG families}
+}
+
+The following files obtained from StringdB are used for the merging step.
+COG.mappings.v10.txt
+Tair_COG.mappings.txt
+Chlamy_COG.mappings.txt
+
